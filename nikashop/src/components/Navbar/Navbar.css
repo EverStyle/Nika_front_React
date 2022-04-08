@@ -1,0 +1,15 @@
+.Navbar_Cont{
+    background-color: #F8F8F8;
+    width: 100%;
+}
+
+.Navbar_Date{
+    display: flex;
+}
+.Navbar_Row{
+    width: 100%;
+    height: 60px;
+    background-color: #F8F8F8;
+    align-items: center;
+    margin-bottom: 20px;
+}

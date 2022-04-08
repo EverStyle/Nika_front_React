@@ -1,0 +1,11 @@
+.Colums{ 
+    text-align: center;
+    border: 2px solid red;
+}
+.Row{
+    margin-top: 20px;
+}
+.Adv_M{
+    background-color: #F8F8F8;
+    width: 100%;
+}

@@ -1,0 +1,62 @@
+.Sliding_Header{
+    display: flex;
+}
+
+.Catalog_button{
+    width: 115px;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    background-color: #4faadf;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 35px;
+}
+
+.Catalog_button_text{
+    color: white;
+}
+.Header_Search{
+    width: 480px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: #F8F8F8;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-bottom: 3px;
+}
+
+.Main_search_block{
+    display: flex;
+    width: 520px;
+    height: 40px;
+    background-color: #F8F8F8;
+    align-items: center;
+    border-radius: 20px;
+}
+.Search_img{
+    width: 18px;
+    height: 18px;
+    background-color: #F8F8F8;
+}
+.Search_button{
+    border: none;
+    background-color: #F8F8F8;
+    padding-left: 5px;
+    padding-bottom: 3px;
+}
+
+.Account_button{
+    border: none;
+    background-color: white;
+   
+}
+.Cart_button{
+    border: none;
+    background-color: white;
+}
+.Colums{ 
+    text-align: center;
+    border: 2px solid red;
+}
