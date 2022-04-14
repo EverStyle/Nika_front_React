@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Navbar.css";
 import { Container, Row, Col } from "react-bootstrap";
+
+
 export default function Navbar() {
     return (
 
@@ -23,8 +25,8 @@ export default function Navbar() {
                         <a href="exp">5</a>
                     </Col>
                 </Row>
-
             </Container>
+
         </div>
 
     )
