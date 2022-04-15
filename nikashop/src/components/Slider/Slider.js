@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './Slider.scss'
 
-export default function Slider({ children, linkToAll, title }) {
+export default function Slider({ children, linkToAll, title, className }) {
 
    const [shift, setShift] = React.useState(0);
 
@@ -19,7 +19,7 @@ export default function Slider({ children, linkToAll, title }) {
 
 
    return (
-      <div className="Slider">
+      <div className={`Slider ` + className}>
          <Container className="Slider__container">
             {title ? <h2 className="Slider__title">{title}</h2> : null}
             <div className="Slider__content">

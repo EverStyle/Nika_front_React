@@ -2,10 +2,26 @@
    color: #1F3948;
 }
 
-.Product__img {
+.Product__mainImg {
    width: 100%;
 }
 
+.Product__img {
+   cursor: pointer;
+   width: 100%;
+
+   &:hover {
+      border: 1px solid #4FA9DE;
+   }
+}
+
+.Product__slider {
+   margin-top: 20px;
+
+   .Slider__container {
+      padding: 0;
+   }
+}
 
 .Product__actions {
    border: 1px solid #F8F8F8;
@@ -18,7 +34,19 @@
    }
 
    .Product__prePrice {
-      font-size: 18px
+      font-size: 18px;
+      position: relative;
+
+      &:before {
+         content: "";
+         border-bottom: 2px solid red;
+         position: absolute;
+         bottom: 50%;
+         left: -3%;
+         width: 100%;
+         height: 10%;
+         transform: rotate(-8deg);
+      }
    }
 
    hr {
@@ -29,5 +57,21 @@
    .Product__button {
       text-align: center;
       width: 100%;
+   }
+
+   .Product__availability,
+   .Product__alert {
+      margin-bottom: 20px;
+
+      img {
+         margin-right: 10px;
+      }
+   }
+
+   .Product__alert {
+      a {
+         text-decoration: none;
+         color: #1994DC;
+      }
    }
 }
