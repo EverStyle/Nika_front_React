@@ -50,12 +50,10 @@ export default function SlidingHeader() {
                 </Row>
             </Container>
 
-            <Transition
-                in={visibility}
-                timeout={1000}
-            >
-                {state => <Catalog visibility={visibility} className={state} />}
-            </Transition>
+
+
+            <Catalog visibility={visibility} />
+
 
         </header >
     )

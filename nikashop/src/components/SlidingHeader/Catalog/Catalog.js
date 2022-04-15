@@ -7,7 +7,7 @@ import "./Catalog.scss";
 
 
 
-export default function Catalog({ className }) {
+export default function Catalog({ visibility }) {
    const topics = ['По категориям', 'По областям пртименения', 'Распродажа и скидки', 'Бестселлеры', 'Для бизнеса'];
    const links = ['Антисептики', 'Дезинфицирующие средства', 'Маски', 'Облучатели-рециркуляторы', 'Туалетная бумага'];
    const titles = ['Covid-19', 'Бытовая химия', 'Дезинфицирующие средства', 'Хозяйственные товары'];
@@ -20,7 +20,7 @@ export default function Catalog({ className }) {
    }
 
    return (
-      <div className={className + ' Catalog'} >
+      <div className={'Catalog ' + (visibility ? 'Catalog_visible' : 'Catalog_hidden')} >
          <Container>
             <Row>
                <Col md={12}>

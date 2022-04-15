@@ -1,6 +1,12 @@
 .Sliding_Header {
     display: flex;
     position: sticky;
+    z-index: 998;
+    top: 0;
+    background: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #F8F8F8;
+    align-items: center;
 }
 
 .Catalog_button {

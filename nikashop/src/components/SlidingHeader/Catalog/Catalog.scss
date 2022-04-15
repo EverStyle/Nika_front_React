@@ -1,12 +1,24 @@
-@keyframes moveDown {
+@keyframes moveUp {
    from {
       top: 100%;
-      opacity: 1;
+      transform: translate(0, 0);
    }
 
    to {
-      top: -100%;
-      opacity: 0;
+      top: 0;
+      transform: translate(0, -100%);
+   }
+}
+
+@keyframes moveDown {
+   from {
+      top: 0;
+      transform: translate(0, -100%);
+   }
+
+   to {
+      top: 100%;
+      transform: translate(0, 0);
    }
 }
 
@@ -29,18 +41,12 @@
    top: 100%;
    z-index: -1;
 
-   &.entering {
+   &.Catalog_visible {
       animation: moveDown 1s forwards;
    }
 
-   &.entered {
-      top: 0%;
-      opacity: 0;
-      display: none;
-   }
-
-   &.exiting {
-      animation: moveDown 1s reverse;
+   &.Catalog_hidden {
+      animation: moveUp 1s forwards;
    }
 }
 

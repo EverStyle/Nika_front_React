@@ -1,0 +1,51 @@
+.Slider {}
+
+.Slider__container {
+   position: relative !important;
+}
+
+.Slider__content {
+   overflow: hidden;
+}
+
+.Slider__row {
+   flex-wrap: nowrap !important;
+   transition: 300ms;
+}
+
+.Slider__arrow {
+   position: absolute;
+   top: 35%;
+   cursor: pointer;
+   border-radius: 50%;
+   height: 40px;
+   width: 40px;
+   background: #F8F8F8 url(../../images/slider_arrow.svg) no-repeat center center;
+
+   &:hover {
+      border: 1px solid #1994DC;
+   }
+
+   &.Slider__arrow_right {
+      right: -50px;
+   }
+
+   &.Slider__arrow_left {
+      left: -50px;
+      transform: rotate(180deg);
+   }
+}
+
+.Slider__all {
+   color: #1994DC;
+   font-size: 14px;
+   position: absolute;
+   top: 5px;
+   right: 12px;
+}
+
+.Slider__title {
+   font-size: 24px;
+   font-weight: 500;
+   color: #1F3948;
+}
