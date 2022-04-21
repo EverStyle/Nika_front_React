@@ -5,6 +5,7 @@ import ProductTag from './components/ProductTag/ProductTag';
 import Discount from './components/Discount/Discount';
 import Slider from './components/Slider/Slider';
 import Button from './components/Button/Button';
+import Card from './components/Card/Card';
 
 
 
@@ -32,6 +33,54 @@ const testProduct = {
    ]
 }
 
+const testCards = [
+   {
+      name: "Набор Для ванной комнаты 2.0",
+      tag: "Бестселлер",
+      price: "639 ₽",
+   },
+   {
+      name: "Набор “Для кухни 2.0”",
+      tag: "Новинка",
+      price: "3999 ₽",
+   },
+   {
+      name: "Набор “Эко-уборка”",
+      price: "639 ₽",
+      discount: "30%"
+   },
+   {
+      name: "Набор “Защита для дома”",
+      price: "167 ₽",
+   },
+   {
+      name: "Дозатор настенный в ассортименте",
+      tag: "Бестселлер",
+      price: "391 ₽",
+      discount: "10%"
+   },
+   {
+      name: "Комбинезон одноразовый с капюшоне",
+      price: "99 ₽",
+      discount: "25%"
+   },
+   {
+      name: "Набор Для ванной комнаты 2.0",
+      tag: "Новинка",
+      price: "1999 ₽",
+   },
+   {
+      name: "Набор Для ванной комнаты 2.0",
+      tag: "Бестселлер",
+      price: "639 ₽",
+   },
+   {
+      name: "Набор “Для кухни 2.0”",
+      tag: "Новинка",
+      price: "3999 ₽",
+   },
+];
+
 export default function Product() {
    const [mainImg, setMainImg] = React.useState(testProduct.images[0]);
 
@@ -41,7 +90,7 @@ export default function Product() {
          <div className="Product">
             <Container>
                <Row>
-                  <Discount discount={testProduct.discount} />
+                  <Discount discount={testProduct.discount} className="Product__discount" />
                   <h1 className="Product__title"> {testProduct.name} </h1>
 
                   <Col md={5}>
@@ -134,6 +183,18 @@ export default function Product() {
                   </Tabs>
                </Row>
             </Container>
+
+            <Slider linkToAll="products" title="Рекомендуем также" className="Product__recomends">
+               {testCards.map((card, index) =>
+                  <Card
+                     name={card.name}
+                     tag={card.tag}
+                     price={card.price}
+                     discount={card.discount}
+                     key={index}
+                  />
+               )}
+            </Slider>
          </div>
       </>
    )
