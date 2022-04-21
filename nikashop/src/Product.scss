@@ -1,18 +1,21 @@
-.Product {
-   color: #1F3948;
-}
-
 .Product__mainImg {
-   width: 100%;
+   position: relative;
+
+   img {
+      width: 100%;
+   }
+
+   .Product__tag {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: auto;
+   }
 }
 
 .Product__img {
    cursor: pointer;
    width: 100%;
-
-   &:hover {
-      border: 1px solid #4FA9DE;
-   }
 }
 
 .Product__slider {
@@ -74,4 +77,22 @@
          color: #1994DC;
       }
    }
+}
+
+
+.Product__tabs {
+   margin-top: 70px;
+}
+
+.Product__subtitle {
+   font-size: 18px;
+}
+
+.Product_paragraph {
+   font-size: 14px;
+}
+
+.Product__warning {
+   list-style-type: none;
+   color: #FF416E;
 }

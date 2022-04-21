@@ -6,7 +6,9 @@ import Discount from './components/Discount/Discount';
 import Slider from './components/Slider/Slider';
 import Button from './components/Button/Button';
 
-import { Col, Container, Row } from 'react-bootstrap';
+
+
+import { Col, Container, Row, Tabs, Tab } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './Product.scss';
@@ -43,7 +45,10 @@ export default function Product() {
                   <h1 className="Product__title"> {testProduct.name} </h1>
 
                   <Col md={5}>
-                     <img className="Product__mainImg" src={mainImg} />
+                     <div className="Product__mainImg">
+                        <ProductTag tag={testProduct.tag} className="Product__tag" />
+                        <img src={mainImg} />
+                     </div>
                      <Slider className="Product__slider">
                         {testProduct.images.map((image, index) =>
                            <Col md={3}>
@@ -52,9 +57,13 @@ export default function Product() {
                         )}
                      </Slider>
                   </Col>
+
+
                   <Col md={4}>
                      <div className="Product__info"></div>
                   </Col>
+
+
                   <Col md={3}>
                      <div className="Product__actions">
 
@@ -78,9 +87,51 @@ export default function Product() {
 
                      </div>
                   </Col>
+               </Row>
 
 
 
+               <Row>
+                  <Tabs
+                     defaultActiveKey="description"
+                     transition={true}
+                     id="Product__description"
+                     className="mb-3"
+                     bsPrefix="myTabs Product__tabs"
+                  >
+                     <Tab eventKey="description" title="Описание">
+                        <h2 className="Product__subtitle">Основная иинформация</h2>
+                        <p className="Product_paragraph">Средство чистящее предназначено для чистки оконных стекол, зеркал, стеклянных поверхностей витрин и витражей, кафеля, керамики, фарфора, хрусталя, а также пластиковых окон и твердых полимерных поверхностей от различных видов загрязнений, остатков насекомых.</p>
+                        <h2 className="Product__subtitle">Преимущества</h2>
+                        <p className="Product_paragraph">В состав входит триклозан, что обеспечивает антибактериальный эффект.
+                           Благодаря специальной формуле легко и быстро удаляет сильные загрязнения, жирные пятна, следы от пальцев и остатки насекомых.
+
+                           Нашатырный спирт придает дополнительный блеск обрабатываемым поверхностям и быстро испаряется, не оставляя разводов.
+
+                           Эффект «антипыль» создает на поверхности пленку, которая отталкивает пыль и влагу, обеспечивая антистатический эффект.</p>
+                        <h2 className="Product__subtitle">Способ применения</h2>
+                        <ol className="Product_paragraph">
+                           <li>Повернуть носик распылителя в положение «ОМ/5РКАУ»</li>
+                           <li>Нанести средство на небольшой участок очищаемой поверхности с расстояния 10 - 15 см</li>
+                           <li>Насухо (до блеска) протереть чистой, мягкой, сухой тканью или бумажной салфеткой</li>
+                           <li className="Product__warning">*  При условии правильного применения средство не оставляет разводов, подтеков и других следов.</li>
+                        </ol>
+
+                     </Tab>
+                     <Tab eventKey="сharacteristics" title="Характеристики">
+                        2
+                     </Tab>
+                     <Tab eventKey="documents" title="Документы">
+                        3
+                     </Tab>
+                     <Tab eventKey="reviews" title="Отзывы">
+                        4
+                     </Tab>
+                     <Tab eventKey="useful" title="Области применения">
+                        5
+                     </Tab>
+
+                  </Tabs>
                </Row>
             </Container>
          </div>

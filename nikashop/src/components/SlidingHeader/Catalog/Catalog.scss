@@ -50,42 +50,8 @@
    }
 }
 
-.Catalog__tabs {
-   display: flex;
-   padding: 0;
-
-   .Catalog__tab {
-      cursor: pointer;
-      list-style-type: none;
-      margin-right: 40px;
-      font-size: 14px;
-      color: #1994DC;
-      font-weight: 700;
-      transition: 300ms;
-
-      &.Catalog__tab_active {
-         color: #000;
-         position: relative;
-
-         &::after {
-            content: '';
-            height: 2px;
-            border-radius: 1px;
-            background: #FF416E;
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            left: 50%;
-            transform: translate(-50%, 0);
-            animation: showLine 1s forwards;
-         }
-      }
-   }
-}
-
 .Catalog__tittle {
    font-size: 14px;
-   color: #1F3948;
    font-weight: 600;
    padding-top: 20px;
 }
@@ -101,6 +67,10 @@
 .Catalog__links {
    opacity: 0.6;
    font-size: 14px;
-   color: #1F3948;
    text-decoration: none;
+}
+
+.Catalog__tab {
+   display: flex;
+   margin-left: 12px;
 }

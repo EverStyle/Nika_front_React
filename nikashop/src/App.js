@@ -9,7 +9,7 @@ import Card from "./components/Card/Card";
 import { Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import './App.css';
+import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const testCards = [

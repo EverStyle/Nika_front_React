@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Tabs, Tab } from "react-bootstrap";
 
 import Column from "./Column";
 
@@ -8,39 +8,40 @@ import "./Catalog.scss";
 
 
 export default function Catalog({ visibility }) {
-   const topics = ['По категориям', 'По областям пртименения', 'Распродажа и скидки', 'Бестселлеры', 'Для бизнеса'];
+   const topics = ['По областям пртименения', 'Распродажа и скидки', 'Бестселлеры', 'Для бизнеса'];
    const links = ['Антисептики', 'Дезинфицирующие средства', 'Маски', 'Облучатели-рециркуляторы', 'Туалетная бумага'];
    const titles = ['Covid-19', 'Бытовая химия', 'Дезинфицирующие средства', 'Хозяйственные товары'];
 
    const [activeIndex, setActiveIndex] = React.useState(0);
-
-   function filter(index) {
-      setActiveIndex(index);
-      console.log('Filter!')
-   }
 
    return (
       <div className={'Catalog ' + (visibility ? 'Catalog_visible' : 'Catalog_hidden')} >
          <Container>
             <Row>
                <Col md={12}>
-                  <ul className="Catalog__tabs">
+
+                  <Tabs
+                     defaultActiveKey="По областям пртименения"
+                     transition={true}
+                     id="Product__description"
+                     className="mb-3"
+                     bsPrefix="myTabs"
+                  >
                      {topics.map((value, index) =>
-                        <li
-                           className={`Catalog__tab  ${index == activeIndex ? 'Catalog__tab_active' : ''}`}
-                           onClick={() => filter(index)}
+                        <Tab
                            key={value}
                            index={index}
-                        > {value} </li>
+                           eventKey={value}
+                           title={value}
+                        >
+                           <div className="Catalog__tab">
+                              {titles.map(titleValue => <Column title={titleValue} links={links} key={titleValue} />)}
+                           </div>
+                        </Tab>
                      )}
-                  </ul>
+                  </Tabs>
+
                </Col>
-            </Row>
-
-
-
-            <Row>
-               {titles.map(value => <Column title={value} links={links} key={value} />)}
             </Row>
          </Container>
       </div>

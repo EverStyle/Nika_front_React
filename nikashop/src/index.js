@@ -7,7 +7,7 @@ import App from './App';
 import Product from './Product';
 import reportWebVitals from './reportWebVitals';
 
-import './index.css';
+import './index.scss';
 
 ReactDOM.render(
   <BrowserRouter>
