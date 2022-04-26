@@ -4,6 +4,7 @@ import SlidingHeader from "./components/SlidingHeader/SlidingHeader";
 import Navbar from "./components/Navbar/Navbar";
 import SlidingAdvantages from "./components/SlidingAdvantages/SlidingAdvantages"
 import Slider from "./components/Slider/Slider";
+import Footer from "./components/Footer/Footer";
 import Card from "./components/Card/Card";
 
 import { Col } from 'react-bootstrap';
@@ -123,6 +124,7 @@ function App() {
         )}
       </Slider>
 
+      <Footer />
     </div>
   );
 }

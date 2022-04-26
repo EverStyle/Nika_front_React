@@ -3,8 +3,10 @@ import React from 'react'
 import SlidingHeader from './components/SlidingHeader/SlidingHeader';
 import ProductTag from './components/ProductTag/ProductTag';
 import Discount from './components/Discount/Discount';
+import Property from './components/Property/Property';
 import Slider from './components/Slider/Slider';
 import Button from './components/Button/Button';
+import Footer from './components/Footer/Footer';
 import Card from './components/Card/Card';
 
 
@@ -18,6 +20,7 @@ const testProduct = {
    id: 327192478,
    name: 'Средство для мытья стекол и зеркал “Ника”',
    tag: 'Бестселлер',
+   compound: "Изопропиловый спирт, Аммиак водный, Н'ПАВ, Триклозан, Ароматическая добавка, Краситель",
    price: '1639 ₽',
    prePrice: '2022 ₽',
    discount: '- 15%',
@@ -109,7 +112,11 @@ export default function Product() {
 
 
                   <Col md={4}>
-                     <div className="Product__info"></div>
+                     <div className="Product__info">
+                        <Property name="Код товара" value={testProduct.id} key={testProduct.id} />
+                        <Property name="Состав" value={testProduct.compound} key={testProduct.compound} />
+                        {testProduct.info.map(property => <Property name={property[0]} value={property[1]} key={property[0]} />)}
+                     </div>
                   </Col>
 
 
@@ -132,8 +139,11 @@ export default function Product() {
 
                         <Button type="squre" className="Product__button">Добавить в корзину</Button>
                      </div>
-                     <div className="Product_delivery">
-
+                     <div className="Product__delivery">
+                        <Property name="Самовывоз" value="Бесплатно" key="Самовывоз" />
+                        <Property name="Курьером" value="От 200 ₽" key="Курьером" />
+                        <Property name="От 1 000 ₽" value="Бесплатно" key="От 1 000 ₽" />
+                        <Link className="Product__link" to="https://google.com">Подробнее...</Link>
                      </div>
                   </Col>
                </Row>
@@ -195,6 +205,8 @@ export default function Product() {
                   />
                )}
             </Slider>
+
+            <Footer />
          </div>
       </>
    )

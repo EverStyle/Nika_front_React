@@ -1,0 +1,36 @@
+.Footer {
+   font-size: 14px;
+   background-color: #F8F8F8;
+   padding: 40px 0;
+   margin-top: 50px;
+
+   .Footer__title {
+      font-size: 14px;
+      font-weight: 700;
+   }
+
+   .Footer__element {
+      font-weight: 400;
+      list-style: none;
+      margin-top: 25px;
+   }
+
+   .Footer__ul {
+      padding: 0;
+   }
+
+   .Footer__link {
+      color: #1F3948;
+      text-decoration: none;
+      transition: 300ms;
+
+      &:hover {
+         text-decoration: underline;
+      }
+   }
+
+   .Footer__about {
+      margin-bottom: 25px;
+      font-weight: 500;
+   }
+}
