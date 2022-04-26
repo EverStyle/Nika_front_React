@@ -4,7 +4,7 @@ import SlidingHeader from "./components/SlidingHeader/SlidingHeader";
 import Navbar from "./components/Navbar/Navbar";
 import SlidingAdvantages from "./components/SlidingAdvantages/SlidingAdvantages"
 import './App.css';
-
+import AxCall from "./components/AxCall";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <Navbar></Navbar>
      <SlidingHeader></SlidingHeader>
 <SlidingAdvantages></SlidingAdvantages>
+<AxCall></AxCall>
     </div>
   );
 }

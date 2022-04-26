@@ -7,20 +7,21 @@ export default function Navbar() {
         <div className="Navbar_Cont">
             <Container className="Navbar_Cont" >
                 <Row className="Navbar_Row">
-                    <Col md={4} className="Navbar_Date">
-                        <div>
-                            Сб-Вс - Выходной
-                        </div>
-                        <div>
+                    <Col md={6} className="Navbar_Date">
+                        <div className="Navbar_time">
                             Пн-Пт с 8:30 до 17:30
                         </div>
+                        <div className="Navbar_time">
+                        Сб-Вс - Выходной
+                        </div>
                     </Col>
-                    <Col md={5}>
-                        <a href="exp">1</a>
-                        <a href="exp">2</a>
-                        <a href="exp">3</a>
-                        <a href="exp">4</a>
-                        <a href="exp">5</a>
+                    <Col md={6} className="Navbar_links">
+                        <a href="exp">О нас </a>
+                        <a href="exp">Госзакупки</a>
+                        <a href="exp">Предприятиям</a>
+                        <a href="exp">Оплата и доставка</a>
+                        <a href="exp">Новости</a>
+                        <a href="exp">Контакты</a>
                     </Col>
                 </Row>
 

@@ -13,3 +13,10 @@
     align-items: center;
     margin-bottom: 20px;
 }
+.Navbar_links{
+    display: flex;
+    justify-content: space-between;
+}
+.Navbar_time{
+    padding-right: 30px;
+}
