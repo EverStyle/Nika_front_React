@@ -22,7 +22,7 @@ export default function Card({ name, price, tag, discount, imgUrl, ...args }) {
 
                <div className="Card__discription">
                   <span className="Card__price"> {price + ' ₽'} </span>
-                  <Discount discount={discount + '%'} />
+                  <Discount discount={discount} />
                   <p className="Card__name"> {name} </p>
                </div>
             </Link>
