@@ -1,13 +1,12 @@
 import React from 'react'
 
-import SlidingHeader from './components/SlidingHeader/SlidingHeader';
-import ProductTag from './components/ProductTag/ProductTag';
-import Discount from './components/Discount/Discount';
-import Property from './components/Property/Property';
-import Slider from './components/Slider/Slider';
-import Button from './components/Button/Button';
-import Footer from './components/Footer/Footer';
-import Card from './components/Card/Card';
+
+import ProductTag from '../../components/ProductTag/ProductTag';
+import Discount from '../../components/Discount/Discount';
+import Property from '../../components/Property/Property';
+import Slider from '../../components/Slider/Slider';
+import Button from '../../components/Button/Button';
+import Card from '../../components/Card/Card';
 
 
 
@@ -89,7 +88,6 @@ export default function Product() {
 
    return (
       <>
-         <SlidingHeader />
          <div className="Product">
             <Container>
                <Row>
@@ -129,11 +127,11 @@ export default function Product() {
                         <hr />
 
                         <div className="Product__availability">
-                           <img src="./images/cardIcons/availability.svg"></img>
+                           <img src="../../images/cardIcons/availability.svg"></img>
                            <span>В наличии - {testProduct.count} шт.</span>
                         </div>
                         <div className="Product__alert">
-                           <img src="./images/cardIcons/alert.svg"></img>
+                           <img src="../../images/cardIcons/alert.svg"></img>
                            <Link to="/">Узнать о снижении цены.</Link>
                         </div>
 
@@ -205,8 +203,6 @@ export default function Product() {
                   />
                )}
             </Slider>
-
-            <Footer />
          </div>
       </>
    )

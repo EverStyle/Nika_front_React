@@ -1,24 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import App from './App';
-import Product from './Product';
+import App from './pages/App';
+import Product from './pages/product/Product';
 import reportWebVitals from './reportWebVitals';
+
+
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import SlidingHeader from "./components/SlidingHeader/SlidingHeader";
 
 import './index.scss';
 
+
+function Index() {
+
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <SlidingHeader />
+      <Routes>
+        <Route path="/" element={<App />} />
+      </Routes>
+      <Routes>
+        <Route path="/product" element={<Product />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  )
+}
+
 ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-    </Routes>
-    <Routes>
-      <Route path="/product" element={<Product />} />
-    </Routes>
-  </BrowserRouter>,
+  <Index />,
   document.getElementById('root')
 );
 
 reportWebVitals();
+
