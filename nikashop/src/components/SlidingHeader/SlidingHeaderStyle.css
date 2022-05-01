@@ -68,11 +68,39 @@
 
 }
 
-.Cart_button {
+.Basket_button {
     border: none;
     background-color: white;
+    text-decoration: none;
+    color: #1F3948;
+    position: relative;
+}
+
+.Basket_icon path {
+    transition: 300ms;
+}
+
+.Basket_button:hover path {
+    fill: #3A5B6F;
+}
+
+.Basket_button:hover {
+    color: #3A5B6F;
 }
 
 .Colums {
     text-align: center;
+}
+
+.Basket_button_size {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #FF416E;
+    color: #fff;
+    position: absolute;
+    font-size: 12px;
+    display: block;
+    top: -6px;
+    right: -17px;
 }

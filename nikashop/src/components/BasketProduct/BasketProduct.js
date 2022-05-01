@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './BasketProduct.scss'
 import { Link } from 'react-router-dom';
 
-export default function BasketProduct({ card, deleteCard }) {
-
-   const [count, setCount] = useState(card.count);
+export default function BasketProduct({ card, deleteCard, setCount }) {
 
    return (
       <div className="BasketProduct">
@@ -21,9 +19,23 @@ export default function BasketProduct({ card, deleteCard }) {
             {card.prePrice ? <div className="BasketProduct__prePrice"> {card.prePrice} </div> : null}
          </div>
          <div className="BasketProduct__counter">
-            <button className="BasketProduct__button" onClick={() => setCount(preValue => preValue - 1)}>-</button>
-            <input className="BasketProduct__input" value={count} type="text" onChange={(event) => setCount(event.target.value)} />
-            <button className="BasketProduct__button" onClick={() => setCount(preValue => preValue + 1)}>+</button>
+            <button
+               className="BasketProduct__button"
+               disabled={card.count < 1}
+               onClick={() => setCount(card.id, card.count - 1)}
+            >-</button>
+
+            <input
+               className="BasketProduct__input"
+               value={card.count}
+               type="text"
+               onChange={(event) => setCount(card.id, event.target.value)}
+            />
+
+            <button
+               className="BasketProduct__button"
+               onClick={() => setCount(card.id, card.count + 1)}
+            >+</button>
          </div>
 
       </div>

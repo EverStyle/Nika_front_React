@@ -1,0 +1,47 @@
+.BasketResult {
+   background: #fff;
+   border-radius: 12px;
+   padding: 30px 30px;
+
+   &>* {
+      margin-bottom: 10px;
+   }
+
+   .BasketResult__title {
+      font-size: 14px;
+      font-weight: 700;
+   }
+
+   hr {
+      opacity: 20%;
+   }
+
+   .Button {
+      font-size: 14px;
+      width: 100%;
+   }
+}
+
+.BasketResult__line {
+   display: flex;
+   justify-content: space-between;
+   font-size: 14px;
+
+   .BasketResult__value {
+      font-weight: 700;
+   }
+
+   &.BasketResult__line_result {
+      font-size: 24px;
+      font-weight: 700;
+   }
+
+   &.BasketResult__line_discount .BasketResult__value {
+      color: #FF416E;
+   }
+}
+
+.BasketResult__info {
+   font-size: 12px;
+   opacity: 60%;
+}
