@@ -4,7 +4,11 @@
    padding: 30px 30px;
 
    &>* {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+   }
+
+   &>*:last-child {
+      margin-bottom: 0px;
    }
 
    .BasketResult__title {

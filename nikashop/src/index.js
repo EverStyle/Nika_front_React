@@ -35,8 +35,6 @@ const basketFromFetch = [
     id: 2,
     name: "Набор “Для кухни 2.0”",
     price: 3999,
-    prePrice: 4777,
-    discount: 30,
     imgUrl: 'https://dummyimage.com/700x700/FFE4EB/000',
     count: 2,
     info: [

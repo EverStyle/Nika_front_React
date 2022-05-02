@@ -8,11 +8,12 @@ import Slider from '../../components/Slider/Slider';
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
 
+
 import './Basket.scss';
 
 export default function Basket({ basket, deleteCard, setCount }) {
    const totalSum = basket.reduce((sum, card) => sum + card.price * card.count, 0);
-   const totalDiscount = basket.reduce((sum, card) => sum + (card.prePrice - card.price) * card.count, 0);
+   const totalDiscount = basket.reduce((sum, card) => sum + ((card.prePrice || card.price) - card.price) * card.count, 0);
 
    return (
       <main>
