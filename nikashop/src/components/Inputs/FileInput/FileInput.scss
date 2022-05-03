@@ -1,0 +1,32 @@
+.FileInput__input {
+   display: none;
+}
+
+.FileInput__label {
+   padding: 8px 15px;
+   display: block;
+   width: fit-content;
+   background-color: #4faadf;
+   align-items: center;
+   justify-content: space-evenly;
+   border: none;
+   color: #fff;
+   border-radius: 4px;
+   cursor: pointer;
+}
+
+.FileInput__file {
+   font-size: 14px;
+   font-weight: 500;
+
+   .FileInput__remove {
+      margin-left: 5px;
+      cursor: pointer;
+   }
+}
+
+.FileInput__hint {
+   color: #9A9A9A;
+   font-size: 14px;
+   margin-bottom: 20px;
+}

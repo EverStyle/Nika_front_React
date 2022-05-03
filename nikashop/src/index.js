@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from './pages/App';
 import Product from './pages/product/Product';
 import Basket from './pages/basket/Basket';
+import Payment from './pages/payment/Payment';
 import reportWebVitals from './reportWebVitals';
 
 
@@ -87,6 +88,9 @@ function Index() {
       </Routes>
       <Routes>
         <Route path="/basket" element={<Basket basket={basket} deleteCard={deleteCard} setCount={setCount} />} />
+      </Routes>
+      <Routes>
+        <Route path="/payment" element={<Payment basket={basket} />} />
       </Routes>
       <Footer />
     </BrowserRouter>

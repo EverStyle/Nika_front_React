@@ -1,0 +1,38 @@
+.TextInput {
+   position: relative;
+}
+
+.TextInput__label {
+   display: block;
+   color: #9A9A9A;
+   font-size: 14px;
+   margin-bottom: 8px;
+}
+
+.TextInput__input {
+   background: #F9FAFB;
+   border: 1px solid #EDF0F6;
+   border-radius: 4px;
+   display: block;
+   width: 320px;
+   font-size: 14px;
+   padding: 8px;
+   transition: 300ms;
+
+   &:focus {
+      outline: none;
+      background: #fff;
+   }
+}
+
+.TextInput__errorMessage {
+   color: #FF3C3C;
+   font-size: 12px;
+   position: absolute;
+   top: 100%;
+   left: 0;
+}
+
+.TextInput_error .TextInput__input {
+   border: 1px solid #FF3C3C;
+}

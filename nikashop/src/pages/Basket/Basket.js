@@ -8,7 +8,6 @@ import Slider from '../../components/Slider/Slider';
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
 
-
 import './Basket.scss';
 
 export default function Basket({ basket, deleteCard, setCount }) {
@@ -22,12 +21,24 @@ export default function Basket({ basket, deleteCard, setCount }) {
                <Row>
                   <h1 className="Basket__title">Корзина</h1>
                   <Col md={9}>
-                     {basket.map(card => <BasketProduct card={card} key={card.id} deleteCard={deleteCard} setCount={setCount} />)}
+                     {basket.map(card =>
+                        <BasketProduct
+                           card={card}
+                           key={card.id}
+                           deleteCard={deleteCard}
+                           setCount={setCount}
+                        />
+                     )}
                   </Col>
 
                   <Col md={3}>
-                     <BasketResult total={totalSum} discount={totalDiscount} />
-                     <Link className="Basket__instruction" to="https://google.com">Инструкция по закупке через портал поставщиков</Link>
+                     <BasketResult
+                        total={totalSum}
+                        discount={totalDiscount}
+                        buttonText="Перейти к оформлению"
+                        to="/payment"
+                        text="Доступные способы и время доставки можно выбрать при оформлении заказа"
+                     />
                   </Col>
                </Row>
             </Container>

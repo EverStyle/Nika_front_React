@@ -23,7 +23,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <main className="App">
       <SlidingAdvantages />
 
       <Slider title="Реклама">
@@ -84,7 +84,7 @@ function App() {
           />
         )}
       </Slider>
-    </div>
+    </main>
   );
 }
 

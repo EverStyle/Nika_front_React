@@ -97,7 +97,7 @@ export default function Product() {
 
    return (
 
-      <div className="Product">
+      <main className="Product">
          <Container>
             <Row>
                <Discount discount={testProduct.discount} className="Product__discount" />
@@ -213,6 +213,6 @@ export default function Product() {
                />
             )}
          </Slider>
-      </div>
+      </main>
    )
 }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Button from '../../components/Button/Button';
 
-export default function BasketResult({ total = 0, discount = 0 }) {
+export default function BasketResult({ total = 0, discount = 0, buttonText = "Error", to = "/404", text = "" }) {
    return (
       <div className="BasketResult">
          <h3 className="BasketResult__title">Общая стоимость</h3>
@@ -25,10 +25,10 @@ export default function BasketResult({ total = 0, discount = 0 }) {
             <span className="BasketResult__value">{`${total - discount} ₽`}</span>
          </div>
 
-         <Button type="squre">Перейти к оформлению</Button>
+         <Button type="squre" to={to}>{buttonText}</Button>
 
          <p className="BasketResult__info">
-            Доступные способы и время доставки можно выбрать при оформлении заказа
+            {text}
          </p>
 
       </div >
