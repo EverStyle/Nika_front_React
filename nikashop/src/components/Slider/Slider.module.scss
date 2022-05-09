@@ -1,19 +1,19 @@
-.Slider {}
+.slider {}
 
-.Slider__container {
+.container {
    position: relative !important;
 }
 
-.Slider__content {
+.content {
    overflow: hidden;
 }
 
-.Slider__row {
+.row {
    flex-wrap: nowrap !important;
    transition: 300ms;
 }
 
-.Slider__arrow {
+.arrow {
    position: absolute;
    top: 35%;
    cursor: pointer;
@@ -26,17 +26,17 @@
       border: 1px solid #1994DC;
    }
 
-   &.Slider__arrow_right {
+   &.rightArrow {
       right: -50px;
    }
 
-   &.Slider__arrow_left {
+   &.leftArrow {
       left: -50px;
       transform: rotate(180deg);
    }
 }
 
-.Slider__all {
+.linkToAll {
    color: #1994DC;
    font-size: 14px;
    position: absolute;
@@ -44,7 +44,7 @@
    right: 12px;
 }
 
-.Slider__title {
+.title {
    font-size: 24px;
    font-weight: 500;
    color: #1F3948;

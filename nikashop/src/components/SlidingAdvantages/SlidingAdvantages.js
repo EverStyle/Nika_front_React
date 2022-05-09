@@ -1,13 +1,15 @@
 import React from "react";
-import styles from "./SlidingAdvantages.css";
 import { Container, Row, Col } from "react-bootstrap";
+
+import slidingAdvantages from "./SlidingAdvantages.module.scss";
+
 export default function Navbar() {
     return (
 
-        <div className="Adv_M">
-            <Container className="Cont" >
-                <Row className="Row">
-                    <Col className="Colums">
+        <div className={slidingAdvantages.advM}>
+            <Container className={slidingAdvantages.cont} >
+                <Row className={slidingAdvantages.row}>
+                    <Col className={slidingAdvantages.column}>
                         <div>
                             <img src="../images/a1.png"></img>
                         </div>
@@ -18,7 +20,7 @@ export default function Navbar() {
                             До вашего склада или терминала ТК
                         </div>
                     </Col>
-                    <Col className="Colums" >
+                    <Col className={slidingAdvantages.column} >
                         <div>
                             <img src="../images/a2.png"></img>
                         </div>
@@ -29,37 +31,37 @@ export default function Navbar() {
                             Весь асортимент продукции серии "Ника"
                         </div>
                     </Col>
-                    <Col className="Colums">
+                    <Col className={slidingAdvantages.column}>
                         <div>
                             <img src="../images/a3.png"></img>
                         </div>
                         <div>
-                        Выделенный менеджер
+                            Выделенный менеджер
                         </div>
                         <div>
-                        помощь в выборе средств, для конкретного предприятия
+                            помощь в выборе средств, для конкретного предприятия
                         </div>
                     </Col>
-                    <Col className="Colums">
+                    <Col className={slidingAdvantages.column}>
                         <div>
                             <img src="../images/a4.png"></img>
                         </div>
                         <div>
-                        Быстрые сроки поставки
+                            Быстрые сроки поставки
                         </div>
                         <div>
-                        сроки поставки товаров (1-2 дня)
+                            сроки поставки товаров (1-2 дня)
                         </div>
                     </Col>
-                    <Col className="Colums">
+                    <Col className={slidingAdvantages.column}>
                         <div>
                             <img src="../images/a5.png"></img>
                         </div>
                         <div>
-                        Фиксированная цена
+                            Фиксированная цена
                         </div>
                         <div>
-                        в течение года
+                            в течение года
                         </div>
                     </Col>
                 </Row>

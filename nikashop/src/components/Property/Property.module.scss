@@ -1,21 +1,21 @@
-.Property {
+.property {
    font-size: 14px;
    position: relative;
    display: flex;
    margin-bottom: 20px;
 
-   .Property__name {
+   .name {
       opacity: 60%;
       width: fit-content;
       white-space: pre;
    }
 
-   .Property__value {
+   .value {
       width: 45%;
       min-width: 45%;
    }
 
-   .Property__line {
+   .line {
       background: none;
       border-bottom: 2px dotted #C3C3C3;
       width: 100%;

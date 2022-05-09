@@ -1,4 +1,4 @@
-.BasketProduct {
+.basket {
    display: flex;
    position: relative;
    justify-content: space-around;
@@ -23,36 +23,36 @@
       border-radius: 0 0 12px 12px;
    }
 
-   .BasketProduct__title {
+   .title {
       font-size: 14px;
       font-weight: 600;
    }
 
-   .BasketProduct__property {
+   .property {
       font-size: 12px;
       opacity: 60%;
    }
 
-   .BasketProduct__img {
+   .img {
       width: 12%;
       height: auto;
       object-fit: contain;
       object-position: top left;
    }
 
-   .BasketProduct__delete {
+   .deleteBtn {
       font-size: 12px;
       color: #1994DC;
       cursor: pointer;
    }
 
-   .BasketProduct__price {
+   .price {
       font-size: 14px;
       font-weight: 600;
       width: 6%;
    }
 
-   .BasketProduct__prePrice {
+   .prePrice {
       opacity: 60%;
       font-weight: 500;
       position: relative;
@@ -70,18 +70,18 @@
       }
    }
 
-   .BasketProduct__info {
+   .content {
       width: 40%;
    }
 
-   .BasketProduct__counter {
+   .counter {
       border-radius: 4px;
       border: 2px solid #E8EBF0;
       display: flex;
       position: relative;
       height: 40px;
 
-      .BasketProduct__input {
+      .input {
          border: none;
          height: 100%;
          text-align: center;
@@ -90,7 +90,7 @@
          width: 7em;
       }
 
-      .BasketProduct__button {
+      .counterBtn {
          color: #1994DC;
          background: #E8EBF0;
          border: none;

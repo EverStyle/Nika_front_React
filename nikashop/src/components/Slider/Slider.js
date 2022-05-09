@@ -1,15 +1,15 @@
-import React from 'react'
-import { Container, Row, Col } from "react-bootstrap";
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import './Slider.scss'
+import slider from './Slider.module.scss';
 
 export default function Slider({ children, linkToAll, title, className }) {
 
    const [shift, setShift] = React.useState(0);
 
    function slide(direction, event) {
-      let width = event.target.parentElement.querySelector('.Slider__row').firstChild.offsetWidth;
+      let width = event.target.parentElement.getElementsByClassName(slider.row)[0].firstChild.offsetWidth;
       if (direction == 'right') {
          setShift(pred => pred - width)
       } else {
@@ -17,14 +17,13 @@ export default function Slider({ children, linkToAll, title, className }) {
       }
    }
 
-
    return (
-      <div className={`Slider ` + className}>
-         <Container className="Slider__container">
-            {title ? <h2 className="Slider__title">{title}</h2> : null}
-            <div className="Slider__content">
+      <div className={[slider.slider, className].join(' ')}>
+         <Container className={slider.container}>
+            {title ? <h2 className={slider.title}>{title}</h2> : null}
+            <div className={slider.content}>
                <Row
-                  className="Slider__row"
+                  className={slider.row}
                   style={{
                      transform: `translateX(${shift}px)`
                   }}
@@ -32,9 +31,9 @@ export default function Slider({ children, linkToAll, title, className }) {
                   {children}
                </Row>
             </div>
-            <div className="Slider__arrow Slider__arrow_left" onClick={(e) => slide('left', e)}></div>
-            <div className="Slider__arrow Slider__arrow_right" onClick={(e) => slide('right', e)}></div>
-            {linkToAll ? <Link className="Slider__all" to={linkToAll}>Смотреть все</Link> : null}
+            <div className={`${slider.arrow} ${slider.leftArrow}`} onClick={(e) => slide('left', e)}></div>
+            <div className={`${slider.arrow} ${slider.rightArrow}`} onClick={(e) => slide('right', e)}></div>
+            {linkToAll ? <Link className={slider.linkToAll} to={linkToAll}>Смотреть все</Link> : null}
          </Container>
       </div>
    )

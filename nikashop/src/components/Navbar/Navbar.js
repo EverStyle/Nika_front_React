@@ -1,15 +1,15 @@
 import React from "react";
-import styles from "./Navbar.css";
+import navbar from "./Navbar.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 
 
 export default function Navbar() {
     return (
 
-        <div className="Navbar_Cont">
-            <Container className="Navbar_Cont" >
-                <Row className="Navbar_Row">
-                    <Col md={4} className="Navbar_Date">
+        <div className={navbar.cont}>
+            <Container className={navbar.cont} >
+                <Row className={navbar.row}>
+                    <Col md={4} className={navbar.date}>
                         <div>
                             Сб-Вс - Выходной
                         </div>

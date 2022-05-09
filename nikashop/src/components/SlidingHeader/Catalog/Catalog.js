@@ -1,9 +1,9 @@
-import React from "react";
-import { Container, Row, Col, Tabs, Tab } from "react-bootstrap";
+import React from 'react';
+import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 
-import Column from "./Column";
+import Column from './Column';
 
-import "./Catalog.scss";
+import styles from './Catalog.module.scss';
 
 
 
@@ -12,10 +12,8 @@ export default function Catalog({ visibility }) {
    const links = ['Антисептики', 'Дезинфицирующие средства', 'Маски', 'Облучатели-рециркуляторы', 'Туалетная бумага'];
    const titles = ['Covid-19', 'Бытовая химия', 'Дезинфицирующие средства', 'Хозяйственные товары'];
 
-   const [activeIndex, setActiveIndex] = React.useState(0);
-
    return (
-      <div className={'Catalog ' + (visibility ? 'Catalog_visible' : 'Catalog_hidden')} >
+      <div className={[styles.catalog, (visibility ? styles.visible : styles.hidden)].join(' ')} >
          <Container>
             <Row>
                <Col md={12}>
@@ -34,7 +32,7 @@ export default function Catalog({ visibility }) {
                            eventKey={value}
                            title={value}
                         >
-                           <div className="Catalog__tab">
+                           <div className={styles.tab}>
                               {titles.map(titleValue => <Column title={titleValue} links={links} key={titleValue} />)}
                            </div>
                         </Tab>

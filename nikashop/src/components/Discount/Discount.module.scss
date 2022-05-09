@@ -1,10 +1,12 @@
-.ProductTag {
+.discount {
    font-size: 14px;
    font-weight: 500;
    border-radius: 14px;
-   padding: 3px 5px;
+   padding: 3px 15px;
+   background: #FF416E;
    position: absolute;
    color: #fff;
    left: 0;
    top: 0;
+   transform: translate(0, -100%);
 }

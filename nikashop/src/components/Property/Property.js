@@ -1,12 +1,12 @@
 import React from 'react'
-import styles from "./Property.scss";
+import property from "./Property.module.scss";
 
 export default function Property({ name, value }) {
    return (
-      <div className="Property">
-         <span className="Property__name">{name}</span>
-         <hr className="Property__line" />
-         <span className="Property__value">{value}</span>
+      <div className={property.property}>
+         <span className={property.name}>{name}</span>
+         <hr className={property.line} />
+         <span className={property.value}>{value}</span>
       </div>
    )
 }

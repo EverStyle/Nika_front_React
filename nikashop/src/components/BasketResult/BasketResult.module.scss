@@ -1,4 +1,4 @@
-.BasketResult {
+.basketResult {
    background: #fff;
    border-radius: 12px;
    padding: 30px 30px;
@@ -14,7 +14,7 @@
       margin-bottom: 0px;
    }
 
-   .BasketResult__title {
+   .title {
       font-size: 14px;
       font-weight: 700;
    }
@@ -22,33 +22,37 @@
    hr {
       opacity: 20%;
    }
-
-   .Button {
-      font-size: 14px;
-      width: 100%;
-   }
 }
 
-.BasketResult__line {
+.line {
    display: flex;
    justify-content: space-between;
    font-size: 14px;
 
-   .BasketResult__value {
+   .lineValue {
       font-weight: 700;
    }
 
-   &.BasketResult__line_result {
+   .lineName {}
+
+   &.resultLine {
       font-size: 24px;
       font-weight: 700;
    }
 
-   &.BasketResult__line_discount .BasketResult__value {
-      color: #FF416E;
+   &.discountLine {
+      .lineValue {
+         color: #FF416E;
+      }
    }
 }
 
-.BasketResult__info {
+.info {
    font-size: 12px;
    opacity: 60%;
+}
+
+.button {
+   font-size: 14px;
+   width: 100%;
 }

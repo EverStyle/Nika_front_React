@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import InputMask from 'react-input-mask'
-import './TextInput.scss'
+import React, { useState } from 'react';
+import InputMask from 'react-input-mask';
+import textInput from './TextInput.module.scss';
 
 export default function TextInput({ label, name, mask, minLen, maxLen, pattern }) {
    const [inputValue, setInputValue] = useState('');
@@ -35,12 +35,12 @@ export default function TextInput({ label, name, mask, minLen, maxLen, pattern }
 
 
    return (
-      <div className={'TextInput' + (errorMessage ? ' TextInput_error' : '')}>
-         <label className="TextInput__label" htmlFor={name}>
+      <div className={[textInput.textInput, (errorMessage ? textInput.error : null)].join(' ')}>
+         <label className={textInput.label} htmlFor={name}>
             {label}
          </label>
          <InputMask
-            className="TextInput__input"
+            className={textInput.input}
             name={name}
             id={name}
             type="text"
@@ -50,7 +50,7 @@ export default function TextInput({ label, name, mask, minLen, maxLen, pattern }
             onBlur={validate}
          />
 
-         {errorMessage ? <div className="TextInput__errorMessage">{errorMessage}</div> : null}
+         {errorMessage ? <div className={textInput.errorMessage}>{errorMessage}</div> : null}
       </div>
    )
 }

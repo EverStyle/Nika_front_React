@@ -2,27 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-
-import InputsGroup from '../../components/Inputs/InputsGroup/InputsGroup';
-import BasketResult from '../../components/BasketResult/BasketResult';
-import TextInput from '../../components/Inputs/TextInput/TextInput';
-import FileInput from '../../components/Inputs/FileInput/FileInput';
-import Select from '../../components/Inputs/Select/Select';
-import Radio from '../../components/Inputs/Radio/Radio';
-import Button from '../../components/Button/Button';
-
-
-import './Payment.scss';
+import { InputsGroup, TextInput, FileInput, Select, Radio } from '../../components/Inputs'
+import { BasketResult, Button } from '../../components';
+import payment from './Payment.module.scss';
 
 export default function Payment({ basket }) {
    const totalSum = basket.reduce((sum, card) => sum + card.price * card.count, 0);
    const totalDiscount = basket.reduce((sum, card) => sum + ((card.prePrice || card.price) - card.price) * card.count, 0);
 
    return (
-      <main className="Payment">
+      <main className={payment.payment}>
          <Container>
             <Row>
-               <Link className="Payment__back" to="/basket">Вернуться в корзину</Link>
+               <Link className={payment.linkBack} to="/basket">Вернуться в корзину</Link>
                <h1 className="Payment__title">Оформление заказа</h1>
                <Col md={9}>
                   <InputsGroup title="Тест TextInput">
@@ -33,7 +25,7 @@ export default function Payment({ basket }) {
                   </InputsGroup>
 
                   <InputsGroup title="Тест Select">
-                     <Select label="Имя" name="fruit">
+                     <Select label="Фрукт" name="fruit">
                         <option value="grapefruit">Грейпфрут</option>
                         <option value="lime">Лайм</option>
                         <option value="coconut">Кокос</option>

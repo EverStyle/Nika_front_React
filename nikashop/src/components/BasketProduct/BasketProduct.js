@@ -1,49 +1,62 @@
-import React, { useEffect, useState } from 'react'
-import './BasketProduct.scss'
-import { Link } from 'react-router-dom';
-
+import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
-import Button from '../Button/Button';
+
+import { Button } from '../';
+import basketProduct from './BasketProduct.module.scss';
+
 
 export default function BasketProduct({ card, deleteCard, setCount }) {
 
    const [show, setShow] = useState(false);
 
-
    return (
       <>
-         <div className="BasketProduct">
-            <img className="BasketProduct__img" src={card.imgUrl} alt="product" />
-            <div className="BasketProduct__info">
-               <h2 className="BasketProduct__title"> {card.name} </h2>
+         <div className={basketProduct.basket}>
+            <img className={basketProduct.img} src={card.imgUrl} alt="product" />
+
+            <div className={basketProduct.content}>
+               <h2 className={basketProduct.title}> {card.name} </h2>
                {card.info.map(([name, value]) =>
-                  <div className="BasketProduct__property" key={name}>{`${name}: ${value}`}</div>
+                  <div className={basketProduct.property} key={name}>
+                     {`${name}: ${value}`}
+                  </div>
                )}
                <div
-                  className="BasketProduct__delete"
-                  onClick={() => { console.log(show); setShow(true); console.log(show); }}
+                  className={basketProduct.deleteBtn}
+                  onClick={() => setShow(true)}
                >Удалить</div>
             </div>
-            <div className="BasketProduct__price">
-               <div className="BasketProduct__currentPrice"> {card.price} ₽ </div>
-               {card.prePrice ? <div className="BasketProduct__prePrice"> {card.prePrice} ₽ </div> : null}
+
+            <div className={basketProduct.price}>
+               <div className={basketProduct.currentPrice}>
+                  {card.price} ₽
+               </div>
+               {
+                  card.prePrice ?
+                     <div className={basketProduct.prePrice}>
+                        {card.prePrice} ₽
+                     </div>
+                     :
+                     null
+               }
             </div>
-            <div className="BasketProduct__counter">
+
+            <div className={basketProduct.counter}>
                <button
-                  className="BasketProduct__button"
+                  className={basketProduct.counterBtn}
                   disabled={card.count < 1}
                   onClick={() => setCount(card.id, card.count - 1)}
                >-</button>
 
                <input
-                  className="BasketProduct__input"
+                  className={basketProduct.input}
                   value={card.count}
                   type="text"
                   onChange={(event) => setCount(card.id, event.target.value)}
                />
 
                <button
-                  className="BasketProduct__button"
+                  className={basketProduct.counterBtn}
                   onClick={() => setCount(card.id, card.count + 1)}
                >+</button>
             </div>

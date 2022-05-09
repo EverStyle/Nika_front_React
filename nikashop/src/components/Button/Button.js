@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import './Button.scss'
+import styles from './Button.module.scss'
 
 export default function Button({ children, type, className, to, ...args }) {
    return (
       to ?
          <Link
             to={to}
-            className={['Button', className].join(' ')}
+            className={[styles.button, className].join(' ')}
             style={{
                borderRadius: type == "squre" ? '4px' : '20px',
                textDecoration: 'none',
@@ -19,7 +19,7 @@ export default function Button({ children, type, className, to, ...args }) {
          :
 
          <button
-            className={['Button', className].join(' ')}
+            className={[styles.button, className].join(' ')}
             style={{
                borderRadius: type == "squre" ? '4px' : '20px',
             }}

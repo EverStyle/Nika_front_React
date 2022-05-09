@@ -1,28 +1,28 @@
-.Card {
+.card {
    position: relative;
 }
 
-.Card__img {
+.img {
    border: 1px solid #F8F8F8;
    width: 100%;
    object-fit: contain;
 }
 
-.Card__name {
+.name {
    font-size: 14px;
    color: #1F3948;
 }
 
-.Card__link {
+.link {
    text-decoration: none;
 }
 
-.Card__price {
+.price {
    font-size: 18px;
    font-weight: 500;
    color: #FF416E;
 }
 
-.Card__discription {
+.discription {
    position: relative;
 }

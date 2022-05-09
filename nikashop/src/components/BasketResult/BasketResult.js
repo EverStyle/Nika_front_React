@@ -1,36 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import './BasketResult.scss'
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from '../../components/Button/Button';
+import basketResult from './BasketResult.module.scss';
+import { Button } from '../';
 
 export default function BasketResult({ total = 0, discount = 0, buttonText = "Error", to = "/404", text = "" }) {
    return (
-      <div className="BasketResult">
-         <h3 className="BasketResult__title">Общая стоимость</h3>
-         <div className="BasketResult__line BasketResult__line_total">
+      <div className={basketResult.basketResult}>
+         <h3 className={basketResult.title}>Общая стоимость</h3>
+         <div className={`${basketResult.line}  ${basketResult.totalLine}`}>
             <span className="BasketResult__name">Товары</span>
             <span className="BasketResult__value">{total}</span>
          </div>
 
-         <div className="BasketResult__line BasketResult__line_discount">
-            <span className="BasketResult__name">Скидки</span>
-            <span className="BasketResult__value">{discount}</span>
+         <div className={`${basketResult.line}  ${basketResult.discountLine}`}>
+            <span className={basketResult.lineName}>Скидки</span>
+            <span className={basketResult.lineValue}>{discount}</span>
          </div>
 
          <hr />
 
-         <div className="BasketResult__line BasketResult__line_result">
-            <span className="BasketResult__name">Итого</span>
-            <span className="BasketResult__value">{`${total - discount} ₽`}</span>
+         <div className={`${basketResult.line}  ${basketResult.resultLine}`}>
+            <span className={basketResult.lineName}>Итого</span>
+            <span className={basketResult.lineValue}>{`${total - discount} ₽`}</span>
          </div>
 
-         <Button type="squre" to={to}>{buttonText}</Button>
+         <Button type="squre" to={to} className={basketResult.button}>{buttonText}</Button>
 
-         <p className="BasketResult__info">
+         <p className={basketResult.info}>
             {text}
          </p>
-
       </div >
    )
 }

@@ -1,9 +1,14 @@
 import React from 'react'
 
-import './Discount.scss'
+import styles from './Discount.module.scss'
 
-export default function Discount({ discount, className = '' }) {
+export default function Discount({ discount, className }) {
    return (
-      discount ? <span className={'Discount ' + className}> {discount + '%'} </span> : null
+      discount ?
+         <span className={[styles.discount, className].join(' ')}>
+            {discount + '%'}
+         </span>
+         :
+         null
    )
 }
