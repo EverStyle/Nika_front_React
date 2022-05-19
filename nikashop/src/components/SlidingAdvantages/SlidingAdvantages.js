@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SlidingAdvantages.css";
 import { Container, Row, Col } from "react-bootstrap";
-export default function Navbar() {
+export default function SlidingAdvantages() {
     return (
 
         <div className="Adv_M">
