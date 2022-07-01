@@ -35,4 +35,17 @@
    &.error .input {
       border: 1px solid #FF3C3C;
    }
+
+   .helpLink {
+      font-size: 12px;
+      color: #1994DC;
+      text-decoration: none;
+      position: absolute;
+      right: 0;
+      top: 3px;
+
+      &:hover {
+         text-decoration: underline;
+      }
+   }
 }

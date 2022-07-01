@@ -18,7 +18,9 @@ export default function SlidingHeader({ basketSize }) {
                 <Container>
                     <Row>
                         <Col className={slidingHeader.column} md={2}>
-                            <img src="../images/logo_3D_out 1.png" alt="Error"></img>
+                            <Link to="/">
+                                <img src="../images/logo_3D_out 1.png" alt="Error"></img>
+                            </Link>
                         </Col>
 
                         <Col className={slidingHeader.column} md={2}>
@@ -38,10 +40,13 @@ export default function SlidingHeader({ basketSize }) {
                         </Col>
 
                         <Col className={slidingHeader.column} md={1}>
-                            <button className={slidingHeader.accountButton}>
-                                <img src="../images/user_icon.png" alt="Error"></img>
+                            <Link className={slidingHeader.accountButton} to="/login">
+                                <svg className={slidingHeader.accountIcon} width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.99978 9.48221C10.0065 9.48221 12.1612 6.93317 12.1612 4.31499C12.1612 1.69653 10.2983 0 7.99978 0C5.7016 0 3.83836 1.69653 3.83836 4.31499C3.83836 6.93317 5.9275 9.48221 7.99978 9.48221Z" fill="#1F3948" />
+                                    <path d="M15.4445 13.9402C14.9415 12.9872 14.5749 12.507 13.892 11.8285C13.3017 11.242 11.5399 10.4156 10.4028 10.7791C9.49584 10.969 9.45293 11.4682 8.00009 11.4682C6.54725 11.4682 6.50404 10.969 5.59678 10.7791C4.45964 10.4156 2.69816 11.242 2.10752 11.8285C1.42432 12.507 1.05804 12.9875 0.555375 13.9402C0.30312 14.418 -0.222537 15.8116 0.103585 16.4113C0.516142 17.17 1.52056 17.4841 4.28126 17.8066C5.93486 18 8.00009 18 8.00009 18C8.00009 18 10.0647 18 11.7186 17.8066C14.4793 17.4841 15.4831 17.17 15.8963 16.4113C16.2227 15.8116 15.6968 14.418 15.4445 13.9402Z" fill="#1F3948" />
+                                </svg>
                                 <div>Войти</div>
-                            </button>
+                            </Link>
                         </Col>
 
                         <Col className={slidingHeader.column} md={1}>

@@ -13,16 +13,33 @@ export default function Navbar() {
                         <div>
                             Сб-Вс - Выходной
                         </div>
-                        <div>
+                        <div className={navbar.wordTime}>
                             Пн-Пт с 8:30 до 17:30
                         </div>
                     </Col>
-                    <Col md={5}>
-                        <a href="exp">1</a>
-                        <a href="exp">2</a>
-                        <a href="exp">3</a>
-                        <a href="exp">4</a>
-                        <a href="exp">5</a>
+                    <Col md={7} className="ms-auto">
+                        <nav className={navbar.menu}>
+                            <ul className={navbar.list}>
+                                <li className={navbar.element}>
+                                    <a className={navbar.link} href="exp">О нас</a>
+                                </li>
+                                <li className={navbar.element}>
+                                    <a className={navbar.link} href="exp">Госзакупки</a>
+                                </li>
+                                <li className={navbar.element}>
+                                    <a className={navbar.link} href="exp">Предприятиям</a>
+                                </li>
+                                <li className={navbar.element}>
+                                    <a className={navbar.link} href="exp">Оплата и доставка</a>
+                                </li>
+                                <li className={navbar.element}>
+                                    <a className={navbar.link} href="exp">Новости</a>
+                                </li>
+                                <li className={navbar.element}>
+                                    <a className={navbar.link} href="exp">Контакты</a>
+                                </li>
+                            </ul>
+                        </nav>
                     </Col>
                 </Row>
             </Container>

@@ -62,13 +62,8 @@
     padding-bottom: 3px;
 }
 
+.basketButton,
 .accountButton {
-    border: none;
-    background-color: white;
-
-}
-
-.basketButton {
     border: none;
     background-color: white;
     text-decoration: none;
@@ -76,15 +71,18 @@
     position: relative;
 }
 
-.basketIcon path {
+.basketIcon path,
+.accountIcon path {
     transition: 300ms;
 }
 
-.basketButton:hover path {
+.basketButton:hover path,
+.accountButton:hover path {
     fill: #3A5B6F;
 }
 
-.basketButton:hover {
+.basketButton:hover,
+.accountButton:hover {
     color: #3A5B6F;
 }
 

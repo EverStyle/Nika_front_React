@@ -43,6 +43,12 @@ export default function Payment({ basket }) {
                      <FileInput name="importantDocument" />
                   </InputsGroup>
 
+                  <InputsGroup title="Пример 'Thank you block'">
+                     Для подтверждения заказа с Вами свяжется менеджер по указанному телефону: <b>${'<phone>'}</b> <br />
+                     Электронный чек отправлен на указанную почту: <b>${'<mail>'}</b> <br /><br />
+                     ${'<name>'}, спасибо за то, что выбираете “Ника”!
+                  </InputsGroup>
+
 
                </Col>
                <Col md={3}>

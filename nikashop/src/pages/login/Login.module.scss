@@ -1,0 +1,71 @@
+body {
+   background: #F8F8F8;
+}
+
+.form {
+   padding: 0 50px;
+   margin-top: auto;
+   margin-bottom: auto;
+
+   .title {
+      text-align: center;
+      margin-bottom: 40px;
+   }
+
+   .login,
+   .password,
+   .button {
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 25px;
+   }
+
+   .button {
+      margin-top: 40px;
+      padding-left: 45px;
+      padding-right: 45px;
+   }
+}
+
+// .logo {
+//    width: 30%;
+//    margin-left: auto;
+//    margin-right: auto;
+//    display: block;
+//    margin-bottom: 50px;
+// }
+
+.changeTypeBtn {
+   font-size: 14px;
+   opacity: 0.9;
+   text-align: center;
+   color: #1994DC;
+   text-decoration: none;
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+   margin-top: 40px;
+   cursor: pointer;
+
+   &:hover {
+      text-decoration: underline;
+   }
+}
+
+.main {
+   background: #F8F8F8;
+   height: 85vh;
+}
+
+.container,
+.row {
+   height: 100%;
+}
+
+.col {
+   margin-top: auto !important;
+   margin-bottom: auto !important;
+   transform: translateY(-40px);
+   height: fit-content;
+}

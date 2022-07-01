@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
 import textInput from './TextInput.module.scss';
+import { Link } from 'react-router-dom';
 
-export default function TextInput({ label, name, mask, minLen, maxLen, pattern }) {
+
+export default function TextInput({ label, name, mask, minLen, maxLen, pattern, className, helpText, helpLink, ...args }) {
    const [inputValue, setInputValue] = useState('');
    const [errorMessage, setErrorMessage] = useState('');
 
@@ -35,19 +37,26 @@ export default function TextInput({ label, name, mask, minLen, maxLen, pattern }
 
 
    return (
-      <div className={[textInput.textInput, (errorMessage ? textInput.error : null)].join(' ')}>
+      <div className={[textInput.textInput, (errorMessage ? textInput.error : null), (className || null),].join(' ')}>
          <label className={textInput.label} htmlFor={name}>
             {label}
          </label>
+         {helpText ?
+            <Link className={textInput.helpLink} to={helpLink}>
+               {helpText}
+            </Link>
+            :
+            null
+         }
          <InputMask
             className={textInput.input}
             name={name}
             id={name}
-            type="text"
             value={inputValue}
             onChange={event => setInputValue(event.target.value)}
             mask={mask ? mask : ''}
             onBlur={validate}
+            {...args}
          />
 
          {errorMessage ? <div className={textInput.errorMessage}>{errorMessage}</div> : null}

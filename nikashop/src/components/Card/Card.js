@@ -13,7 +13,7 @@ export default function Card({ card, ...args }) {
    const { name, discount, package: pack, tag } = card;
    const price = pack?.[0]?.cost;
    let imgUrl = pack?.[0]?.image?.image;
-   imgUrl = imgUrl ? `http://127.0.0.1:8000${imgUrl}` : 'https://dummyimage.com/700x700/FFE4EB/000'
+   imgUrl = imgUrl || 'https://dummyimage.com/700x700/FFE4EB/000';
 
    return (
       <Col md={2}>

@@ -4,9 +4,11 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Main from './pages/Main';
-import Product from './pages/product/Product';
+import Login from './pages/login/Login';
 import Basket from './pages/basket/Basket';
+import Product from './pages/product/Product';
 import Payment from './pages/payment/Payment';
+
 
 import { Footer, Navbar, SlidingHeader } from './components'
 import { cards } from './testData.js';
@@ -34,6 +36,7 @@ function Index() {
     <BrowserRouter>
       <Navbar />
       <SlidingHeader basketSize={basket.length} />
+
       <Routes>
         <Route path="/" element={<Main />} />
       </Routes>
@@ -45,6 +48,9 @@ function Index() {
       </Routes>
       <Routes>
         <Route path="/payment" element={<Payment basket={basket} />} />
+      </Routes>
+      <Routes>
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </BrowserRouter>

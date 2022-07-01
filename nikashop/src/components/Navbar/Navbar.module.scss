@@ -7,6 +7,10 @@
 
 .date {
     display: flex;
+
+    .wordTime {
+        margin-left: 15px;
+    }
 }
 
 .row {
@@ -14,4 +18,20 @@
     height: 60px;
     background-color: #F8F8F8;
     align-items: center;
+}
+
+.menu {
+    .list {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+
+        .element {
+            .link {
+                color: #1F3948;
+                text-decoration: none;
+            }
+        }
+    }
 }
