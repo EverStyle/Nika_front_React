@@ -10,12 +10,12 @@ export default function BasketResult({ total = 0, discount = 0, buttonText = "Er
          <h3 className={basketResult.title}>Общая стоимость</h3>
          <div className={`${basketResult.line}  ${basketResult.totalLine}`}>
             <span className="BasketResult__name">Товары</span>
-            <span className="BasketResult__value">{total}</span>
+            <span className="BasketResult__value">{`${total} ₽`}</span>
          </div>
 
          <div className={`${basketResult.line}  ${basketResult.discountLine}`}>
             <span className={basketResult.lineName}>Скидки</span>
-            <span className={basketResult.lineValue}>{discount}</span>
+            <span className={basketResult.lineValue}>{`-${discount} ₽`}</span>
          </div>
 
          <hr />

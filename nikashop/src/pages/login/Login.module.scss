@@ -55,7 +55,7 @@ body {
 
 .main {
    background: #F8F8F8;
-   height: 85vh;
+   height: calc(100vh - 80px);
 }
 
 .container,

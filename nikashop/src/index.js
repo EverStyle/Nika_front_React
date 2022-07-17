@@ -16,9 +16,11 @@ import { cards } from './testData.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 
+import axios from 'axios';
+
 
 function Index() {
-  const [basket, setBasket] = useState(cards);
+  const [basket, setBasket] = useState([]);
 
   function deleteCard(id) {
     const newBasket = basket.filter(card => card.id != id);
@@ -32,26 +34,82 @@ function Index() {
     setBasket(newBasket);
   }
 
+  async function loadBasket() {
+    try {
+      let authToken = localStorage.getItem('authToken');
+      let response = await axios.get('https://market.ruban.xyz/api/basket/', {
+        headers: { 'Authorization': `token ${authToken}` }
+      })
+
+      let newBasket = response.data;
+      setBasket(newBasket);
+
+    } catch (err) {
+      console.error(`Error to load basket: ${err}`)
+    }
+  }
+
+
+
+  async function addProductToBasket(product, basketId) {
+    if (basket.length == 0) {
+      createBasket(product);
+      return 0;
+    }
+
+    try {
+      let authToken = localStorage.getItem('authToken');
+      let data = {
+        products: product.id,
+        package: product.package,
+        quantity: product.count,
+      };
+      let params = {
+        headers: { 'Authorization': `token ${authToken}` }
+      }
+
+      let response = await axios.put(`https://market.ruban.xyz/api/basket/${basketId}`, data, params);
+    } catch (err) {
+      console.error(`Error to add product to basket: ${err}`)
+    }
+  }
+
+
+
+  async function createBasket(product) {
+    try {
+      let authToken = localStorage.getItem('authToken');
+      let data = {
+        products: product.id,
+        package: product.package,
+      };
+      let params = {
+        headers: { 'Authorization': `token ${authToken}` }
+      }
+
+      let response = await axios.post('https://market.ruban.xyz/api/basket/', data, params);
+    } catch (err) {
+      console.error(`Error to create basket: ${err}`)
+    }
+  }
+
+
+
+
+
   return (
     <BrowserRouter>
-      <Navbar />
+      {/* <Navbar /> */}
       <SlidingHeader basketSize={basket.length} />
 
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="product/:id" element={<Product addProductToBasket={addProductToBasket} />} />
+        <Route path="basket" element={<Basket basket={basket} deleteCard={deleteCard} setCount={setCount} />} />
+        <Route path="payment" element={<Payment basket={basket} />} />
+        <Route path="login" element={<Login loadBasket={loadBasket} />} />
       </Routes>
-      <Routes>
-        <Route path="/product" element={<Product />} />
-      </Routes>
-      <Routes>
-        <Route path="/basket" element={<Basket basket={basket} deleteCard={deleteCard} setCount={setCount} />} />
-      </Routes>
-      <Routes>
-        <Route path="/payment" element={<Payment basket={basket} />} />
-      </Routes>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-      </Routes>
+
       <Footer />
     </BrowserRouter>
   )

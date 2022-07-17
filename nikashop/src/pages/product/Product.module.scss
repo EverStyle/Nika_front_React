@@ -1,4 +1,6 @@
-.product {}
+.product {
+   margin-top: 30px;
+}
 
 .mainImg {
    position: relative;
@@ -41,6 +43,7 @@
    .prePrice {
       font-size: 18px;
       position: relative;
+      margin-left: 15px;
 
       &:before {
          content: "";
@@ -121,4 +124,9 @@
       color: #1994DC;
       font-size: 14px;
    }
+}
+
+.packages {
+   display: flex;
+   flex-wrap: wrap;
 }

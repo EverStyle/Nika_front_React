@@ -1,15 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Tabs, Tab } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-import { ProductTag, Discount, Property, Slider, Button, Card } from '../../components'
+import { ProductTag, Discount, Property, Slider, Button, Card, ProductPackage } from '../../components'
 import product from './Product.module.scss';
 
-import { sliderCards, card } from '../../testData';
+import { testCard, sliderCards } from '../../testData';
+
+import axios from 'axios';
+
+export default function Product({ addProductToBasket }) {
+   const params = useParams();
+   const productId = params.id;
+
+   const [card, setCard] = useState(testCard);
+   const [packageId, setPackageId] = useState(0);
+   const [mainImg, setMainImg] = useState(card.package[packageId].image.image);
 
 
-export default function Product() {
-   const [mainImg, setMainImg] = React.useState(card.images[0]);
+   useEffect(async () => {
+      try {
+         const response = await axios.get(`https://market.ruban.xyz/api/products/${productId}`);
+         const card = response.data;
+         card.package.forEach(pack => pack.image.image = 'https://market.ruban.xyz' + pack.image.image);
+         console.log(card);
+         const img = card.package[packageId].image.image;
+         setCard(card);
+         setMainImg(img);
+      } catch (err) {
+         console.error(`Error to get product ${err}`)
+      }
+   }, []);
+
+
 
    return (
 
@@ -26,25 +49,37 @@ export default function Product() {
                      <ProductTag tag={card.tag} className={product.tag} />
                      <img src={mainImg} />
                   </div>
+
                   <Slider className={product.slider}>
-                     {card.images.map((image, index) =>
+                     {card.package.map((pack, index) =>
                         <Col md={3}>
                            <img
                               className={product.img}
-                              src={image}
-                              key={index}
-                              onClick={() => setMainImg(image)} />
+                              src={pack.image.image}
+                              key={pack.image.image}
+                              onClick={() => setMainImg(pack.image.image)} />
                         </Col>
                      )}
+
                   </Slider>
                </Col>
 
 
                <Col md={4}>
                   <div className={product.info}>
-                     <Property name="Код товара" value={card.id} key={card.id} />
-                     <Property name="Состав" value={card.compound} key={card.compound} />
-                     {card.info.map(property => <Property name={property[0]} value={property[1]} key={property[0]} />)}
+                     <div className={product.packages}>
+                        {card.package.map((pack, index) =>
+                           <ProductPackage
+                              name={pack.name}
+                              active={index == packageId}
+                              onClick={() => setPackageId(index)}
+                           />
+                        )}
+                     </div>
+
+                     <Property name="Код товара" value={card.id} key={'Код товара'} />
+                     <Property name="Состав" value={card.composition} key={card.composition} />
+                     {/* {card.info.map(property => <Property name={property[0]} value={property[1]} key={property[0]} />)} */}
                   </div>
                </Col>
 
@@ -53,20 +88,25 @@ export default function Product() {
                   <div className={product.actions}>
 
                      <p>Розничная цена</p>
-                     <span className={product.price}> {card.price} </span>
-                     <span className={product.prePrice}> {card.prePrice} </span>
+                     <span className={product.price}> {card.package[packageId].cost} ₽</span>
+                     {
+                        card.discount ?
+                           <span className={product.prePrice}> {Math.round(card.package[packageId].cost * 100 / (100 - card.discount))} ₽</span>
+                           :
+                           null
+                     }
                      <hr />
 
                      <div className={product.availability}>
                         <img src="../../images/cardIcons/availability.svg"></img>
-                        <span>В наличии - {card.count} шт.</span>
+                        <span>В наличии - {card.package[packageId].quantity} шт.</span>
                      </div>
                      <div className={product.alert}>
                         <img src="../../images/cardIcons/alert.svg"></img>
                         <Link to="/">Узнать о снижении цены.</Link>
                      </div>
 
-                     <Button type="squre" className={product.button}>Добавить в корзину</Button>
+                     <Button type="squre" className={product.button} onClick={(card) => addProductToBasket(card)} >Добавить в корзину</Button>
                   </div>
                   <div className={product.delivery}>
                      <Property name="Самовывоз" value="Бесплатно" key="Самовывоз" />
@@ -89,14 +129,9 @@ export default function Product() {
                >
                   <Tab eventKey="description" title="Описание">
                      <h2 className={product.subtitle}>Основная иинформация</h2>
-                     <p className={product.paragraph}>Средство чистящее предназначено для чистки оконных стекол, зеркал, стеклянных поверхностей витрин и витражей, кафеля, керамики, фарфора, хрусталя, а также пластиковых окон и твердых полимерных поверхностей от различных видов загрязнений, остатков насекомых.</p>
-                     <h2 className={product.subtitle}>Преимущества</h2>
-                     <p className={product.paragraph}>В состав входит триклозан, что обеспечивает антибактериальный эффект.
-                        Благодаря специальной формуле легко и быстро удаляет сильные загрязнения, жирные пятна, следы от пальцев и остатки насекомых.
-
-                        Нашатырный спирт придает дополнительный блеск обрабатываемым поверхностям и быстро испаряется, не оставляя разводов.
-
-                        Эффект «антипыль» создает на поверхности пленку, которая отталкивает пыль и влагу, обеспечивая антистатический эффект.</p>
+                     <p className={product.paragraph}>{card.discription}</p>
+                     <h2 className={product.subtitle}>Назначение</h2>
+                     <p className={product.paragraph}>{card.purpose}</p>
                      <h2 className={product.ubtitle}>Способ применения</h2>
                      <ol className={product.paragraph}>
                         <li>Повернуть носик распылителя в положение «ОМ/5РКАУ»</li>

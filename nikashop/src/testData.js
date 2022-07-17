@@ -109,7 +109,7 @@ const sliderCards = [
 ];
 
 
-const card = {
+const testCard = {
    id: 327192478,
    name: 'Средство для мытья стекол и зеркал “Ника”',
    tag: 'Бестселлер',
@@ -118,9 +118,37 @@ const card = {
    prePrice: '2022',
    discount: '- 15',
    count: 2590,
-   images: ['https://dummyimage.com/700x700/FFE4EB/000', 'https://dummyimage.com/700x700/5577EF/000', 'https://dummyimage.com/700x700/1FE4EB/000', 'https://dummyimage.com/700x700/0DFFE0/000', 'https://dummyimage.com/700x700/FFF4EB/000', 'https://dummyimage.com/700x700/4FE4FF/000'],
    description: 'Средство чистящее предназначено для чистки оконных стекол, зеркал, стеклянных поверхностей витрин и витражей, кафеля, керамики, фарфора, хрусталя, а также пластиковых окон и твердых полимерных поверхностей от различных видов загрязнений, остатков насекомых.',
-   package: ['0,75 л', '1 л'],
+   package: [
+      {
+         name: '1 л.',
+         image: {
+            image: 'https://dummyimage.com/700x700/FFE4EB/000',
+         },
+         price: 999,
+      },
+      {
+         name: '2 л.',
+         image: {
+            image: 'https://dummyimage.com/700x700/FFE4EB/000',
+         },
+         price: 999,
+      },
+      {
+         name: '3 л.',
+         image: {
+            image: 'https://dummyimage.com/700x700/FFE4EB/000',
+         },
+         price: 999,
+      },
+      {
+         name: '4 л.',
+         image: {
+            image: 'https://dummyimage.com/700x700/FFE4EB/000',
+         },
+         price: 999,
+      }
+   ],
    info: [
       ['Назначение', 'Для мытья стекол и зеркал'],
       ['Срок годности', '24 месяца'],
@@ -129,4 +157,4 @@ const card = {
    ]
 }
 
-export { cards, sliderCards, card }
+export { cards, sliderCards, testCard }

@@ -4,7 +4,7 @@ import textInput from './TextInput.module.scss';
 import { Link } from 'react-router-dom';
 
 
-export default function TextInput({ label, name, mask, minLen, maxLen, pattern, className, helpText, helpLink, ...args }) {
+export default function TextInput({ label, name, mask, minLen, maxLen, pattern, className, helpText, helpLink, onChange, onError, onNotError, ...args }) {
    const [inputValue, setInputValue] = useState('');
    const [errorMessage, setErrorMessage] = useState('');
 
@@ -12,25 +12,31 @@ export default function TextInput({ label, name, mask, minLen, maxLen, pattern, 
       const len = inputValue.length;
       if (len == 0) {
          setErrorMessage('Заполните это поле');
+         if (typeof (onError) == 'function') onError();
          return;
       }
       if (minLen && len < minLen) {
          setErrorMessage(`Минимальная длина ${minLen} символа`);
+         if (typeof (onError) == 'function') onError();
          return;
       }
       if (maxLen && len > maxLen) {
          setErrorMessage(`Максимальная длина ${maxLen} символа`);
+         if (typeof (onError) == 'function') onError();
          return;
       }
       if (mask && inputValue.includes('_')) {
          setErrorMessage(`Ваш ввод должен соответствовать маске`);
+         if (typeof (onError) == 'function') onError();
          return;
       }
       if (pattern && !pattern.test(inputValue)) {
          setErrorMessage(`Введите корректное значение`);
+         if (typeof (onError) == 'function') onError();
          return;
       }
 
+      if (typeof (onNotError) == 'function') onNotError();
       setErrorMessage('');
    }
 
@@ -53,7 +59,10 @@ export default function TextInput({ label, name, mask, minLen, maxLen, pattern, 
             name={name}
             id={name}
             value={inputValue}
-            onChange={event => setInputValue(event.target.value)}
+            onChange={event => {
+               onChange(event);
+               setInputValue(event.target.value);
+            }}
             mask={mask ? mask : ''}
             onBlur={validate}
             {...args}

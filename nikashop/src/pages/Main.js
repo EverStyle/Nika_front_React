@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
-import axios from 'axios'
+import axios from 'axios';
 
 import { Card, Slider, SlidingAdvantages } from '../components';
 
@@ -11,9 +11,9 @@ function App() {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/products/')
+    axios.get('https://market.ruban.xyz/api/products/')
       .then(result => setCards(result.data.filter(card => card.package.length != 0)))  //Алексей просил, пока что фильтровать здесь
-      .catch(error => console.log('Error to load product list: ', error));
+      .catch(error => console.log('Error to load product list: ', error))
   }, []);
 
 

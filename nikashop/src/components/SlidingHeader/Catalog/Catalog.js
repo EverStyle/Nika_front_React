@@ -1,13 +1,14 @@
-import React from 'react';
+import { useState, useEffect, React } from 'react';
 import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 
 import Column from './Column';
 
 import styles from './Catalog.module.scss';
 
-
+import axios from 'axios';
 
 export default function Catalog({ visibility }) {
+
    const topics = ['По областям пртименения', 'Распродажа и скидки', 'Бестселлеры', 'Для бизнеса'];
    const links = ['Антисептики', 'Дезинфицирующие средства', 'Маски', 'Облучатели-рециркуляторы', 'Туалетная бумага'];
    const titles = ['Covid-19', 'Бытовая химия', 'Дезинфицирующие средства', 'Хозяйственные товары'];
