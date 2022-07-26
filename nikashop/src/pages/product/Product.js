@@ -9,13 +9,24 @@ import { testCard, sliderCards } from '../../testData';
 
 import axios from 'axios';
 
-export default function Product({ addProductToBasket }) {
+export default function Product({ addProductToBasket, basket }) {
+
+   function checkAvailability(productId, packageId) {
+      if (basket.find(el => el.products == productId && el.package == packageId)) {
+         setAvailability(false);
+      } else {
+         setAvailability(true);
+      }
+   }
+
    const params = useParams();
    const productId = params.id;
 
    const [card, setCard] = useState(testCard);
-   const [packageId, setPackageId] = useState(0);
-   const [mainImg, setMainImg] = useState(card.package[packageId].image.image);
+   const [packageIndex, setPackageIndex] = useState(0);
+   const [mainImg, setMainImg] = useState(card.package[packageIndex].image.image);
+
+   const [availability, setAvailability] = useState(true);
 
 
    useEffect(async () => {
@@ -23,14 +34,15 @@ export default function Product({ addProductToBasket }) {
          const response = await axios.get(`https://market.ruban.xyz/api/products/${productId}`);
          const card = response.data;
          card.package.forEach(pack => pack.image.image = 'https://market.ruban.xyz' + pack.image.image);
-         console.log(card);
-         const img = card.package[packageId].image.image;
+         const img = card.package[packageIndex].image.image;
          setCard(card);
          setMainImg(img);
       } catch (err) {
          console.error(`Error to get product ${err}`)
       }
    }, []);
+
+   useEffect(() => checkAvailability(productId, card.package[packageIndex].id), [basket, card, packageIndex]);
 
 
 
@@ -71,8 +83,8 @@ export default function Product({ addProductToBasket }) {
                         {card.package.map((pack, index) =>
                            <ProductPackage
                               name={pack.name}
-                              active={index == packageId}
-                              onClick={() => setPackageId(index)}
+                              active={index == packageIndex}
+                              onClick={() => setPackageIndex(index)}
                            />
                         )}
                      </div>
@@ -88,10 +100,10 @@ export default function Product({ addProductToBasket }) {
                   <div className={product.actions}>
 
                      <p>Розничная цена</p>
-                     <span className={product.price}> {card.package[packageId].cost} ₽</span>
+                     <span className={product.price}> {card.package[packageIndex].cost} ₽</span>
                      {
                         card.discount ?
-                           <span className={product.prePrice}> {Math.round(card.package[packageId].cost * 100 / (100 - card.discount))} ₽</span>
+                           <span className={product.prePrice}> {Math.round(card.package[packageIndex].cost * 100 / (100 - card.discount))} ₽</span>
                            :
                            null
                      }
@@ -99,14 +111,27 @@ export default function Product({ addProductToBasket }) {
 
                      <div className={product.availability}>
                         <img src="../../images/cardIcons/availability.svg"></img>
-                        <span>В наличии - {card.package[packageId].quantity} шт.</span>
+                        <span>В наличии - {card.package[packageIndex].quantity} шт.</span>
                      </div>
                      <div className={product.alert}>
                         <img src="../../images/cardIcons/alert.svg"></img>
                         <Link to="/">Узнать о снижении цены.</Link>
                      </div>
 
-                     <Button type="squre" className={product.button} onClick={(card) => addProductToBasket(card)} >Добавить в корзину</Button>
+                     {
+                        availability ?
+                           <Button
+                              type="squre"
+                              className={product.button}
+                              onClick={() => addProductToBasket(productId, card.package[packageIndex].id, 1)}
+                           >Добавить в корзину</Button>
+                           :
+                           <Button
+                              type="squre"
+                              to="/basket"
+                              color="green"
+                           >Перейти в корзину</Button>
+                     }
                   </div>
                   <div className={product.delivery}>
                      <Property name="Самовывоз" value="Бесплатно" key="Самовывоз" />

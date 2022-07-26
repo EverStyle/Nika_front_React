@@ -6,6 +6,14 @@
 .linkBack {
    text-decoration: none;
    color: #4FA9DE;
-   font-weight: 600;
-   margin-top: 50px;
+   transition: 300ms;
+   font-weight: 400;
+   opacity: 0.8;
+   padding-top: 50px;
+   width: fit-content !important;
+
+   &:hover {
+      text-decoration: underline;
+      color: #4FA9DE;
+   }
 }

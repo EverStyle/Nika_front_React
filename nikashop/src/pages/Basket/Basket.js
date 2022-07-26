@@ -4,33 +4,57 @@ import { Link } from 'react-router-dom';
 
 import { BasketProduct, BasketResult, Slider, Card } from '../../components';
 import { sliderCards } from '../../testData';
-import basket from './Basket.module.scss';
+import style from './Basket.module.scss';
 
-export default function Basket({ basket: basketValue, deleteCard, setCount }) {
-   const totalSum = basketValue.reduce((sum, card) => sum + card.price * card.count, 0);
-   const totalDiscount = basketValue.reduce((sum, card) => sum + ((card.prePrice || card.price) - card.price) * card.count, 0);
+import axios from 'axios';
+
+export default function Basket({ basket, deleteCard, setCount }) {
+   const [cards, setCards] = useState([]);
+
+   useEffect(async () => {
+      try {
+         let copyCards = [];
+
+         for (let el of basket) {
+            const response = await axios.get(`https://market.ruban.xyz/api/products/${el.products}`);
+            const card = response.data;
+            card.quantity = el.quantity;
+            const packageIndex = card.package.findIndex(pack => pack.id == el.package);
+            card.packageIndex = packageIndex;
+            card.basketId = el.id;
+            card.package.forEach(pack => pack.image.image = 'https://market.ruban.xyz' + pack.image.image);
+            copyCards.push(card);
+         }
+         setCards(copyCards);
+      } catch (err) {
+         console.error(`Error to get products from basket ${err}`)
+      }
+   }, [basket]);
 
    return (
       <main>
-         <div className={basket.basket}>
+         <div className={style.basket}>
             <Container>
                <Row>
-                  <h1 className={basket.title}>Корзина</h1>
+                  <h1 className={style.title}>Корзина</h1>
                   <Col md={9}>
-                     {basketValue.map(card =>
-                        <BasketProduct
-                           card={card}
-                           key={card.id}
-                           deleteCard={deleteCard}
-                           setCount={setCount}
-                        />
-                     )}
+                     {cards.length == 0 ?
+                        <h2 className={style.emptyBasket}>Корзина пока пуста! Перейдите в каталог и добавьте что-нибудь :-)</h2>
+                        :
+                        cards.map(card =>
+                           <BasketProduct
+                              card={card}
+                              key={`${card.name}_${card.packageIndex}`}
+                              deleteCard={deleteCard}
+                              setCount={setCount}
+                           />
+                        )
+                     }
                   </Col>
 
                   <Col md={3}>
                      <BasketResult
-                        total={totalSum}
-                        discount={totalDiscount}
+                        basket={basket}
                         buttonText="Перейти к оформлению"
                         to="/payment"
                         text="Доступные способы и время доставки можно выбрать при оформлении заказа"

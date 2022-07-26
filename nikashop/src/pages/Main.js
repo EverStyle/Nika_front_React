@@ -10,10 +10,13 @@ import styles from './Main.module.scss';
 function App() {
   const [cards, setCards] = useState([]);
 
-  useEffect(() => {
-    axios.get('https://market.ruban.xyz/api/products/')
-      .then(result => setCards(result.data.filter(card => card.package.length != 0)))  //Алексей просил, пока что фильтровать здесь
-      .catch(error => console.log('Error to load product list: ', error))
+  useEffect(async () => {
+    try {
+      let response = await axios.get('https://market.ruban.xyz/api/products/');
+      setCards(response.data.filter(card => card.package.length != 0));
+    } catch (err) {
+      console.error('Error to load product list: ', err);
+    }
   }, []);
 
 

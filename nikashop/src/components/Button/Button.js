@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import styles from './Button.module.scss'
 
-export default function Button({ children, type, className, to, ...args }) {
+export default function Button({ children, type, className, to, color, ...args }) {
    return (
       to ?
          <Link
@@ -12,6 +12,7 @@ export default function Button({ children, type, className, to, ...args }) {
                borderRadius: type == "squre" ? '4px' : '20px',
                textDecoration: 'none',
                color: '#fff',
+               background: color == 'green' ? '#8BD155' : '#4faadf',
             }}
             {...args}
          > {children} </Link>

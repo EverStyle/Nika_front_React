@@ -114,9 +114,7 @@ const testCard = {
    name: 'Средство для мытья стекол и зеркал “Ника”',
    tag: 'Бестселлер',
    compound: "Изопропиловый спирт, Аммиак водный, Н'ПАВ, Триклозан, Ароматическая добавка, Краситель",
-   price: '1639',
-   prePrice: '2022',
-   discount: '- 15',
+   discount: '15',
    count: 2590,
    description: 'Средство чистящее предназначено для чистки оконных стекол, зеркал, стеклянных поверхностей витрин и витражей, кафеля, керамики, фарфора, хрусталя, а также пластиковых окон и твердых полимерных поверхностей от различных видов загрязнений, остатков насекомых.',
    package: [
@@ -125,28 +123,28 @@ const testCard = {
          image: {
             image: 'https://dummyimage.com/700x700/FFE4EB/000',
          },
-         price: 999,
+         cost: 999,
       },
       {
          name: '2 л.',
          image: {
             image: 'https://dummyimage.com/700x700/FFE4EB/000',
          },
-         price: 999,
+         cost: 999,
       },
       {
          name: '3 л.',
          image: {
             image: 'https://dummyimage.com/700x700/FFE4EB/000',
          },
-         price: 999,
+         cost: 999,
       },
       {
          name: '4 л.',
          image: {
             image: 'https://dummyimage.com/700x700/FFE4EB/000',
          },
-         price: 999,
+         cost: 999,
       }
    ],
    info: [

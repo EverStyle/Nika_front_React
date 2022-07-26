@@ -7,9 +7,6 @@ import { BasketResult, Button } from '../../components';
 import payment from './Payment.module.scss';
 
 export default function Payment({ basket }) {
-   const totalSum = basket.reduce((sum, card) => sum + card.price * card.count, 0);
-   const totalDiscount = basket.reduce((sum, card) => sum + ((card.prePrice || card.price) - card.price) * card.count, 0);
-
    return (
       <main className={payment.payment}>
          <Container>
@@ -53,8 +50,7 @@ export default function Payment({ basket }) {
                </Col>
                <Col md={3}>
                   <BasketResult
-                     total={totalSum}
-                     discount={totalDiscount}
+                     basket={basket}
                      buttonText="Оплатить онлайн"
                      text={<>
                         Нажимая на кнопку, вы соглашаетесь

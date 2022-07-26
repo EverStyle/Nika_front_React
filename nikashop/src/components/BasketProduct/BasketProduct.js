@@ -1,26 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 
 import { Button } from '../';
 import basketProduct from './BasketProduct.module.scss';
 
 
+
 export default function BasketProduct({ card, deleteCard, setCount }) {
 
    const [show, setShow] = useState(false);
+   const packageIndex = card.packageIndex;
 
    return (
       <>
          <div className={basketProduct.basket}>
-            <img className={basketProduct.img} src={card.imgUrl} alt="product" />
+            <img className={basketProduct.img} src={card.package[packageIndex].image.image} alt="product" />
 
             <div className={basketProduct.content}>
                <h2 className={basketProduct.title}> {card.name} </h2>
-               {card.info.map(([name, value]) =>
+               {/* {card.info.map(([name, value]) =>
                   <div className={basketProduct.property} key={name}>
                      {`${name}: ${value}`}
                   </div>
-               )}
+               )} */}
                <div
                   className={basketProduct.deleteBtn}
                   onClick={() => setShow(true)}
@@ -29,12 +31,12 @@ export default function BasketProduct({ card, deleteCard, setCount }) {
 
             <div className={basketProduct.price}>
                <div className={basketProduct.currentPrice}>
-                  {card.price} ₽
+                  {card.package[packageIndex].cost} ₽
                </div>
                {
-                  card.prePrice ?
+                  card.discount ?
                      <div className={basketProduct.prePrice}>
-                        {card.prePrice} ₽
+                        {Math.round(card.package[packageIndex].cost * 100 / (100 - card.discount))} ₽
                      </div>
                      :
                      null
@@ -44,20 +46,20 @@ export default function BasketProduct({ card, deleteCard, setCount }) {
             <div className={basketProduct.counter}>
                <button
                   className={basketProduct.counterBtn}
-                  disabled={card.count < 1}
-                  onClick={() => setCount(card.id, card.count - 1)}
+                  disabled={card.quantity < 1}
+                  onClick={() => setCount(card.id, card.quantity - 1)}
                >-</button>
 
                <input
                   className={basketProduct.input}
-                  value={card.count}
+                  value={card.quantity}
                   type="text"
                   onChange={(event) => setCount(card.id, event.target.value)}
                />
 
                <button
                   className={basketProduct.counterBtn}
-                  onClick={() => setCount(card.id, card.count + 1)}
+                  onClick={() => setCount(card.id, card.quantity + 1)}
                >+</button>
             </div>
          </div>
@@ -68,7 +70,7 @@ export default function BasketProduct({ card, deleteCard, setCount }) {
             </Modal.Header>
             <Modal.Body>Вы точно хотите удалить выбранные товары? Отменить действие будет невозможно</Modal.Body>
             <Modal.Footer>
-               <Button type="squre" onClick={() => { deleteCard(card.id); setShow(false) }}>
+               <Button type="squre" onClick={() => { deleteCard(card.basketId); setShow(false) }}>
                   Удалить
                </Button>
             </Modal.Footer>
