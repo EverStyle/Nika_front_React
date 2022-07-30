@@ -13,7 +13,7 @@ function App() {
   useEffect(async () => {
     try {
       let response = await axios.get('https://market.ruban.xyz/api/products/');
-      setCards(response.data.filter(card => card.package.length != 0));
+      setCards(response.data.filter(card => card.package.length != 0)); // Тут фильтруем пока что
     } catch (err) {
       console.error('Error to load product list: ', err);
     }

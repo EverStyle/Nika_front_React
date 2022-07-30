@@ -46,8 +46,25 @@ function Index() {
   function setCount(id, count) {
     const newBasket = JSON.parse(JSON.stringify(basket));
     const card = newBasket.find(card => card.id == id);
-    card.count = count;//
+    card.count = count;
     setBasket(newBasket);
+  }
+
+
+  async function logOut() {
+    try {
+      let authToken = localStorage.getItem('authToken');
+      await axios.post('https://market.ruban.xyz/api/auth/token/logout/', {
+        headers: { 'Authorization': `token ${authToken}` }
+      })
+      setBasket([]);
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('login');
+      localStorage.removeItem('clientID');
+
+    } catch (err) {
+      console.error(`Error to log out: ${err}`)
+    }
   }
 
 
@@ -97,7 +114,7 @@ function Index() {
   return (
     <BrowserRouter>
       {/* <Navbar /> */}
-      <SlidingHeader basketSize={basket.length} />
+      <SlidingHeader basketSize={basket.length} logOut={logOut} />
 
       <Routes>
         <Route path="/" element={<Main />} />

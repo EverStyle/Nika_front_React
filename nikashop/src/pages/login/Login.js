@@ -37,6 +37,7 @@ export default function Login({ loadBasket }) {
 
          const authToken = response.data.auth_token;
          localStorage.setItem('authToken', authToken);
+         localStorage.setItem('login', username);
          await loadBasket();
          navigate('/')
 
