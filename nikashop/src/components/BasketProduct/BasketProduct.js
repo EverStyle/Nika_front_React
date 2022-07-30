@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 
+import { Link } from 'react-router-dom';
 import { Button } from '../';
 import basketProduct from './BasketProduct.module.scss';
 
@@ -13,11 +14,15 @@ export default function BasketProduct({ card, deleteCard, setCount }) {
 
    return (
       <>
-         <div className={basketProduct.basket}>
-            <img className={basketProduct.img} src={card.package[packageIndex].image.image} alt="product" />
+         <div className={basketProduct.basket} to={`product/${card.id}`}>
+            <Link to={`/product/${card.id}`} className={basketProduct.imgLink}>
+               <img className={basketProduct.img} src={card.package[packageIndex].image.image} alt="product" />
+            </Link>
 
             <div className={basketProduct.content}>
-               <h2 className={basketProduct.title}> {card.name} </h2>
+               <h2 className={basketProduct.title}>
+                  <Link to={`/product/${card.id}`}>{card.name}</Link>
+               </h2>
                {/* {card.info.map(([name, value]) =>
                   <div className={basketProduct.property} key={name}>
                      {`${name}: ${value}`}
