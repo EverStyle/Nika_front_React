@@ -6,19 +6,17 @@ import slidingHeader from "./SlidingHeaderStyle.module.scss";
 import { Button } from '../';
 import Catalog from "./Catalog/Catalog";
 
-import { useSelector } from 'react-redux';
+import { logout } from '../../redux/user';
+import { useSelector, useDispatch } from 'react-redux';
 
-export default function SlidingHeader({ logOut }) {
+export default function SlidingHeader() {
 
+    const dispatch = useDispatch();
     const basketSize = useSelector(state => state.basket).length;
     const [visibility, setVisibility] = useState(false);
     const [logOutModal, setLogOutModal] = useState(false);
-    const [tokenAvailability, setTokenAvailability] = useState(localStorage.getItem('authToken') ? true : false);
-    const [profileLogin, setProfileLogin] = useState(localStorage.getItem('login') || null);
-
-    function handleClick() {
-        setVisibility(!visibility);
-    }
+    const tokenAvailability = useSelector(state => state.user.token);
+    const profileLogin = useSelector(state => state.user.name);
 
     return (
         <>
@@ -33,7 +31,7 @@ export default function SlidingHeader({ logOut }) {
                             </Col>
 
                             <Col className={slidingHeader.column} md={2}>
-                                <button className={slidingHeader.catalogButton} onClick={handleClick}>
+                                <button className={slidingHeader.catalogButton} onClick={() => setVisibility(!visibility)}>
                                     <img src="../images/AllMenu.png" alt="Error"></img>
                                     <div className={slidingHeader.catalogButtonText}>КАТАЛОГ</div>
                                 </button>
@@ -60,12 +58,7 @@ export default function SlidingHeader({ logOut }) {
                                             <div>Профиль</div>
                                             <div className={slidingHeader.accountInfo}>
                                                 <ul className={slidingHeader.accountButtons}>
-                                                    {
-                                                        profileLogin ?
-                                                            <li className={slidingHeader.accountLogin}>{profileLogin}</li>
-                                                            :
-                                                            null
-                                                    }
+                                                    <li className={slidingHeader.accountLogin}>{profileLogin}</li>
                                                     <li>Мои заказы</li>
                                                     <li className={slidingHeader.accountBasket}><Link to="/basket">Моя корзина</Link></li>
                                                     <li>Уведомления</li>
@@ -119,7 +112,7 @@ export default function SlidingHeader({ logOut }) {
                         type="squre"
                         onClick={() => {
                             setLogOutModal(false);
-                            logOut();
+                            dispatch(logout());
                         }}>
                         Выйти
                     </Button>
