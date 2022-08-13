@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom';
 import { Button } from '../';
 import basketProduct from './BasketProduct.module.scss';
 
+import { useDispatch } from 'react-redux';
+import { deleteProduct, setCount } from '../../redux/basket';
 
 
-export default function BasketProduct({ card, deleteCard, setCount }) {
+export default function BasketProduct({ card }) {
 
    const [show, setShow] = useState(false);
    const packageIndex = card.packageIndex;
+   const dispatch = useDispatch();
 
    return (
       <>
@@ -59,12 +62,12 @@ export default function BasketProduct({ card, deleteCard, setCount }) {
                   className={basketProduct.input}
                   value={card.quantity}
                   type="text"
-                  onChange={(event) => setCount(card.id, event.target.value)}
+                  onChange={(event) => dispatch(setCount(card.id, event.target.value))}
                />
 
                <button
                   className={basketProduct.counterBtn}
-                  onClick={() => setCount(card.id, card.quantity + 1)}
+                  onClick={() => dispatch(setCount(card.id, card.quantity + 1))}
                >+</button>
             </div>
          </div>
@@ -75,7 +78,10 @@ export default function BasketProduct({ card, deleteCard, setCount }) {
             </Modal.Header>
             <Modal.Body>Вы точно хотите удалить выбранные товары? Отменить действие будет невозможно</Modal.Body>
             <Modal.Footer>
-               <Button type="squre" onClick={() => { deleteCard(card.basketId); setShow(false) }}>
+               <Button type="squre" onClick={() => {
+                  dispatch(deleteProduct(card.basketId));
+                  setShow(false);
+               }}>
                   Удалить
                </Button>
             </Modal.Footer>

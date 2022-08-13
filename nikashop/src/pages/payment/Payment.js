@@ -6,7 +6,15 @@ import { InputsGroup, TextInput, FileInput, Select, Radio } from '../../componen
 import { BasketResult, Button } from '../../components';
 import payment from './Payment.module.scss';
 
-export default function Payment({ basket }) {
+import { useSelector } from 'react-redux';
+
+
+
+export default function Payment() {
+
+   const basket = useSelector(state => state.basket);
+
+
    return (
       <main className={payment.payment}>
          <Container>

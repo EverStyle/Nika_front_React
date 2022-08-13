@@ -8,8 +8,13 @@ import product from './Product.module.scss';
 import { testCard, sliderCards } from '../../testData';
 
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { addProduct } from '../../redux/basket';
 
-export default function Product({ addProductToBasket, basket }) {
+export default function Product() {
+
+   const dispatch = useDispatch();
+   const basket = useSelector(state => state.basket);
 
    function checkAvailability(productId, packageId) {
       if (basket.find(el => el.products == productId && el.package == packageId)) {
@@ -20,7 +25,7 @@ export default function Product({ addProductToBasket, basket }) {
    }
 
    const params = useParams();
-   const productId = params.id;
+   const productId = parseInt(params.id);
 
    const [card, setCard] = useState(testCard);
    const [packageIndex, setPackageIndex] = useState(0);
@@ -123,7 +128,7 @@ export default function Product({ addProductToBasket, basket }) {
                            <Button
                               type="squre"
                               className={product.button}
-                              onClick={() => addProductToBasket(productId, card.package[packageIndex].id, 1)}
+                              onClick={() => dispatch(addProduct(productId, card.package[packageIndex].id, 1))}
                            >Добавить в корзину</Button>
                            :
                            <Button

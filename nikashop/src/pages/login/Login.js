@@ -10,9 +10,11 @@ import form from './Login.module.scss';
 import axios from 'axios';
 
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loadBasket } from '../../redux/basket';
 
 
-export default function Login({ loadBasket }) {
+export default function Login() {
    const navigate = useNavigate();
 
    const [formType, setFormType] = useState('login');
@@ -28,6 +30,8 @@ export default function Login({ loadBasket }) {
    const [registerName, setRegisterName] = useState('');
    const [registerEmail, setRegisterEmail] = useState('');
 
+   const dispatch = useDispatch();
+
    async function login(password, username) {
       try {
          const response = await axios.post('https://market.ruban.xyz/api/auth/token/login/', {
@@ -38,7 +42,7 @@ export default function Login({ loadBasket }) {
          const authToken = response.data.auth_token;
          localStorage.setItem('authToken', authToken);
          localStorage.setItem('login', username);
-         await loadBasket();
+         await dispatch(loadBasket());
          navigate('/')
 
       } catch (error) {

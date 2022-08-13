@@ -7,9 +7,11 @@ import { sliderCards } from '../../testData';
 import style from './Basket.module.scss';
 
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
-export default function Basket({ basket, deleteCard, setCount }) {
+export default function Basket() {
    const [cards, setCards] = useState([]);
+   const basket = useSelector(state => state.basket);
 
    useEffect(async () => {
       try {
@@ -45,8 +47,6 @@ export default function Basket({ basket, deleteCard, setCount }) {
                            <BasketProduct
                               card={card}
                               key={`${card.name}_${card.packageIndex}`}
-                              deleteCard={deleteCard}
-                              setCount={setCount}
                            />
                         )
                      }

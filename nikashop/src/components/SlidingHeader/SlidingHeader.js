@@ -6,7 +6,11 @@ import slidingHeader from "./SlidingHeaderStyle.module.scss";
 import { Button } from '../';
 import Catalog from "./Catalog/Catalog";
 
-export default function SlidingHeader({ basketSize, logOut }) {
+import { useSelector } from 'react-redux';
+
+export default function SlidingHeader({ logOut }) {
+
+    const basketSize = useSelector(state => state.basket).length;
     const [visibility, setVisibility] = useState(false);
     const [logOutModal, setLogOutModal] = useState(false);
     const [tokenAvailability, setTokenAvailability] = useState(localStorage.getItem('authToken') ? true : false);
