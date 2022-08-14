@@ -15,7 +15,7 @@ import Product from './pages/product/Product';
 import Payment from './pages/payment/Payment';
 import Registration from './pages/registration/Registration';
 
-import { Footer, Navbar, SlidingHeader } from './components'
+import { Footer, Navbar, Header } from './components'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
@@ -33,7 +33,7 @@ function Index() {
   return (
     <BrowserRouter>
       {/* <Navbar /> */}
-      <SlidingHeader />
+      <Header />
 
       <Routes>
         <Route path="/" element={<Main />} />

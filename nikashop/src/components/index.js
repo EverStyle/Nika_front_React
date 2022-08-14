@@ -1,18 +1,17 @@
-import SlidingAdvantages from './SlidingAdvantages/SlidingAdvantages';
-import ProductPackage from './ProductPackage/ProductPackage';
-import BasketProduct from './BasketProduct/BasketProduct';
-import SlidingHeader from './SlidingHeader/SlidingHeader';
-import BasketResult from './BasketResult/BasketResult';
-import Sliding from './SlidingHeader/SlidingHeader';
-import ProductTag from './ProductTag/ProductTag';
-import Discount from './Discount/Discount';
-import Property from './Property/Property';
+import SlidingAdvantages from './Main/SlidingAdvantages/SlidingAdvantages';
+import ProductPackage from './Product/ProductPackage/ProductPackage';
+import BasketProduct from './Basket/BasketProduct/BasketProduct';
+import Header from './Header/Header';
+import BasketResult from './Basket/BasketResult/BasketResult';
+import ProductTag from './Product/ProductTag/ProductTag';
+import Discount from './Product/Discount/Discount';
+import Property from './Product/Property/Property';
 import Navbar from './Navbar/Navbar';
 import Slider from './Slider/Slider';
 import Footer from './Footer/Footer';
-import Button from './Button/Button';
-import Card from './Card/Card';
+import Button from './Inputs/Button/Button';
+import Card from './Product/Card/Card';
+import Comment from './Product/Comment/Comment';
+import Rating from './Product/Rating/Rating';
 
-
-
-export { BasketProduct, BasketResult, Navbar, Card, Discount, Footer, ProductTag, Slider, SlidingAdvantages, Sliding, SlidingHeader, Property, Button, ProductPackage }
+export { Comment, BasketProduct, BasketResult, Navbar, Card, Discount, Footer, ProductTag, Slider, SlidingAdvantages, Header, Property, Button, ProductPackage, Rating }

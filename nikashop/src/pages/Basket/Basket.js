@@ -39,7 +39,7 @@ export default function Basket() {
             <Container>
                <Row>
                   <h1 className={style.title}>Корзина</h1>
-                  <Col md={9}>
+                  <Col md={9} lg={8} xl={9}>
                      {cards.length == 0 ?
                         <h2 className={style.emptyBasket}>Корзина пока пуста! Перейдите в каталог и добавьте что-нибудь :-)</h2>
                         :
@@ -52,7 +52,7 @@ export default function Basket() {
                      }
                   </Col>
 
-                  <Col md={3}>
+                  <Col lg={4} xl={3}>
                      <BasketResult
                         basket={basket}
                         buttonText="Перейти к оформлению"

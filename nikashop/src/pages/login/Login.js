@@ -10,29 +10,30 @@ import form from './Login.module.scss';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../../redux/user';
+import { loadBasket } from '../../redux/basket';
 
 
 export default function Login() {
    const user = useSelector(state => state.user);
    const dispatch = useDispatch();
    const navigate = useNavigate();
-   if (user.token) {
-      navigate('/');
-   }
+
 
    const [loginPassword, setLoginPassword] = useState('');
    const [loginName, setLoginName] = useState('');
 
-   function loginEvent(event) {
+   async function loginEvent(event) {
       event.preventDefault();
-      dispatch(login(loginPassword, loginName));
+      await dispatch(login(loginPassword, loginName));
+      await dispatch(loadBasket());
+      navigate('/');
    }
 
    return (
       <main className={form.main}>
          <Container className={form.container}>
             <Row className={['justify-content-md-center', form.row].join(' ')}>
-               <Col md={5} className={form.col}>
+               <Col sm={12} md={8} lg={6} xl={5} className={form.col}>
                   {/* <img className={form.logo} src="../images/logo_3D_out 1.png" /> */}
                   <form className={form.form} onSubmit={(e) => loginEvent(e)}>
                      <InputsGroup>
@@ -55,7 +56,7 @@ export default function Login() {
                         {
                            user.error ?
                               <p className={form.error}>
-                                 {user.error}
+                                 {user.loginError}
                               </p>
                               :
                               null

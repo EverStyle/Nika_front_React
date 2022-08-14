@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Tabs, Tab } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 
-import { ProductTag, Discount, Property, Slider, Button, Card, ProductPackage } from '../../components'
+import { ProductTag, Discount, Property, Slider, Button, Card, ProductPackage, Comment, Rating } from '../../components';
+import { TextInput } from '../../components/Inputs';
 import product from './Product.module.scss';
 
 import { testCard, sliderCards } from '../../testData';
@@ -28,13 +29,14 @@ export default function Product() {
    const productId = parseInt(params.id);
 
    const [card, setCard] = useState(testCard);
+   const [comments, setComments] = useState([]);
+   const [commentText, setCommentText] = useState('');
    const [packageIndex, setPackageIndex] = useState(0);
    const [mainImg, setMainImg] = useState(card.package[packageIndex].image.image);
 
    const [availability, setAvailability] = useState(true);
 
-
-   useEffect(async () => {
+   async function loadProduct() {
       try {
          const response = await axios.get(`https://market.ruban.xyz/api/products/${productId}`);
          const card = response.data;
@@ -43,8 +45,37 @@ export default function Product() {
          setCard(card);
          setMainImg(img);
       } catch (err) {
-         console.error(`Error to get product ${err}`)
+         console.error(`Error to get product: ${err}`)
       }
+   }
+
+   async function loadComments() {
+      try {
+         const response = await axios.get(`https://market.ruban.xyz/api/comments/${productId}`);
+         setComments(response.data);
+      } catch (err) {
+         console.error(`Error to get comments: ${err}`)
+      }
+   }
+
+   async function addComment(event, title, text, grade) {
+      event.preventDefault();
+      try {
+         const data = {
+            title,
+            text,
+            grade
+         };
+         await axios.post(`https://market.ruban.xyz/api/comments/${productId}`, data);
+         loadComments();
+      } catch (err) {
+         console.error(`Error to create comment: ${err}`)
+      }
+   }
+
+   useEffect(() => {
+      loadProduct();
+      loadComments();
    }, []);
 
    useEffect(() => checkAvailability(productId, card.package[packageIndex].id), [basket, card, packageIndex]);
@@ -61,7 +92,7 @@ export default function Product() {
                </Col>
                <h1 className={product.title}> {card.name} </h1>
 
-               <Col md={5}>
+               <Col md={7} lg={5}>
                   <div className={product.mainImg}>
                      <ProductTag tag={card.tag} className={product.tag} />
                      <img src={mainImg} />
@@ -82,7 +113,7 @@ export default function Product() {
                </Col>
 
 
-               <Col md={4}>
+               <Col className="d-md-none d-lg-block" lg={3}>
                   <div className={product.info}>
                      <div className={product.packages}>
                         {card.package.map((pack, index) =>
@@ -101,7 +132,7 @@ export default function Product() {
                </Col>
 
 
-               <Col md={3}>
+               <Col md={5} lg={4}>
                   <div className={product.actions}>
 
                      <p>Розничная цена</p>
@@ -178,7 +209,21 @@ export default function Product() {
                      3
                   </Tab>
                   <Tab eventKey="reviews" title="Отзывы">
-                     4
+                     {
+                        comments.length === 0 ?
+                           <p className={product.noComments}>Комминтариев пока нету, будьте первым ;-)</p>
+                           :
+                           comments.map((comment, i) => <Comment comment={comment} key={i} />)
+                     }
+                     <form onSubmit={(e) => addComment(e)}>
+                        <Rating />
+                        <TextInput
+                           placeholder="Комментировать"
+                           value={commentText}
+                           onChange={(e) => setCommentText(e.value)}
+                        />
+                        <Button className={product.commentButton} type="squre" >Опубликовать</Button>
+                     </form>
                   </Tab>
                   <Tab eventKey="useful" title="Области применения">
                      5
