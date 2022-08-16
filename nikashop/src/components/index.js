@@ -12,6 +12,5 @@ import Footer from './Footer/Footer';
 import Button from './Inputs/Button/Button';
 import Card from './Product/Card/Card';
 import Comment from './Product/Comment/Comment';
-import Rating from './Product/Rating/Rating';
 
-export { Comment, BasketProduct, BasketResult, Navbar, Card, Discount, Footer, ProductTag, Slider, SlidingAdvantages, Header, Property, Button, ProductPackage, Rating }
+export { Comment, BasketProduct, BasketResult, Navbar, Card, Discount, Footer, ProductTag, Slider, SlidingAdvantages, Header, Property, Button, ProductPackage }

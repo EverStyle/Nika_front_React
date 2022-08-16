@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { Provider } from 'react-redux';
 import { loadBasket } from './redux/basket';
@@ -13,6 +13,7 @@ import Login from './pages/login/Login';
 import Basket from './pages/basket/Basket';
 import Product from './pages/product/Product';
 import Payment from './pages/payment/Payment';
+import Search from './pages/search/Search';
 import Registration from './pages/registration/Registration';
 
 import { Footer, Navbar, Header } from './components'
@@ -41,6 +42,7 @@ function Index() {
         <Route path="basket" element={<Basket />} />
         <Route path="payment" element={<Payment />} />
         <Route path="login" element={<Login />} />
+        <Route path="search" element={<Search />} />
         <Route path="registration" element={<Registration />} />
       </Routes>
 

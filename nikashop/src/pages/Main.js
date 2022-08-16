@@ -44,15 +44,27 @@ function App() {
 
 
       <Slider linkToAll="products" title="Скидки недели">
-        {cards.map(card => <Card card={card} key={card.id} />)}
+        {cards.map(card =>
+          <Col md={2} key={card.id}>
+            <Card card={card} />
+          </Col>
+        )}
       </Slider>
 
       <Slider linkToAll="products" title="Бестселлеры">
-        {cards.map(card => <Card card={card} key={card.id} />)}
+        {cards.map(card =>
+          <Col md={2} key={card.id}>
+            <Card card={card} />
+          </Col>
+        )}
       </Slider>
 
       <Slider linkToAll="products" title="Для бизнеса">
-        {cards.map(card => <Card card={card} key={card.id} />)}
+        {cards.map(card =>
+          <Col md={2} key={card.id}>
+            <Card card={card} />
+          </Col>
+        )}
       </Slider>
     </main>
   );

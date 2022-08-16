@@ -39,7 +39,7 @@ export default function Basket() {
             <Container>
                <Row>
                   <h1 className={style.title}>Корзина</h1>
-                  <Col md={9} lg={8} xl={9}>
+                  <Col md={8} lg={8} xl={9}>
                      {cards.length == 0 ?
                         <h2 className={style.emptyBasket}>Корзина пока пуста! Перейдите в каталог и добавьте что-нибудь :-)</h2>
                         :
@@ -52,10 +52,10 @@ export default function Basket() {
                      }
                   </Col>
 
-                  <Col lg={4} xl={3}>
+                  <Col md={4} lg={4} xl={3}>
                      <BasketResult
                         basket={basket}
-                        buttonText="Перейти к оформлению"
+                        buttonText="Заказать"
                         to="/payment"
                         text="Доступные способы и время доставки можно выбрать при оформлении заказа"
                      />
@@ -65,7 +65,11 @@ export default function Basket() {
          </div>
 
          <Slider linkToAll="products" title="Рекомендуем" className="Product__recomends">
-            {sliderCards.map((card, index) => <Card card={card} key={index} />)}
+            {sliderCards.map((card, index) =>
+               <Col md={2} key={index}>
+                  <Card card={card} />
+               </Col>
+            )}
          </Slider>
       </main>
    )
