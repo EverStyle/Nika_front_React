@@ -1,0 +1,14 @@
+.row {
+padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.advM {
+    background-color: #F8F8F8;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.column {
+    text-align: center;
+}

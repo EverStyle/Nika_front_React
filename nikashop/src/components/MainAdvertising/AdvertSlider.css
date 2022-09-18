@@ -1,0 +1,12 @@
+.ContainerSlider1{
+    max-width: 100%;
+    width: 1420px;
+    margin: 0 auto;
+}
+.AdvImg{
+    height: 150px;
+    border: 1px solid #F8F8F8;
+    width: 100%;
+    object-fit: contain;
+     
+}

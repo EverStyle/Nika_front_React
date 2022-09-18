@@ -1,0 +1,24 @@
+.App {}
+
+.ContainerSlider{
+    max-width: 100%;
+    width: 1420px;
+    margin: 0 auto;
+}
+
+.AdSlider {
+   padding-top: 20px;
+}
+.rec.rec-arrow:disabled {
+    visibility: hidden;
+}
+.rec.rec-dot {
+    visibility: hidden;
+}
+.rec.rec-arrow {
+    width: 40px;
+    height: 40px;
+    min-width: 21px;
+    line-height: 0px;
+    font-size: 1.2em;
+}
